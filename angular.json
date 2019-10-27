@@ -234,6 +234,31 @@
           "styleext": "scss"
         }
       }
+    },
+    "customer-api-auth": {
+      "root": "libs/customer/api/auth",
+      "sourceRoot": "libs/customer/api/auth/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer/api/auth/tsconfig.lib.json",
+              "libs/customer/api/auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/customer/api/auth/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer/api/auth/jest.config.js",
+            "tsConfig": "libs/customer/api/auth/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

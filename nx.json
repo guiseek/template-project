@@ -22,6 +22,9 @@
     },
     "ui": {
       "tags": []
+    },
+    "customer-api-auth": {
+      "tags": ["feature:api", "shared"]
     }
   }
 }
