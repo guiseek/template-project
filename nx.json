@@ -25,6 +25,9 @@
     },
     "customer-api-auth": {
       "tags": ["feature:api", "shared"]
+    },
+    "customer-lazy-auth": {
+      "tags": ["feature:lazy"]
     }
   }
 }

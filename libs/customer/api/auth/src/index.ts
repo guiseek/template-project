@@ -1,1 +1,1 @@
-export * from './lib/customer-api-auth';
+export * from './lib/customer-api-auth.module';

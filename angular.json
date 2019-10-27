@@ -259,6 +259,37 @@
           }
         }
       }
+    },
+    "customer-lazy-auth": {
+      "projectType": "library",
+      "root": "libs/customer/lazy/auth",
+      "sourceRoot": "libs/customer/lazy/auth/src",
+      "prefix": "auth",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer/lazy/auth/tsconfig.lib.json",
+              "libs/customer/lazy/auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/customer/lazy/auth/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer/lazy/auth/jest.config.js",
+            "tsConfig": "libs/customer/lazy/auth/tsconfig.spec.json",
+            "setupFile": "libs/customer/lazy/auth/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
