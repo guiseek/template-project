@@ -9,4 +9,6 @@ import { ICustomer } from '@guiseek/data';
 export class AppComponent {
   title = 'customer';
   customers: ICustomer;
+  sidenavOpen = true;
+  sidenavMode = 'side';
 }

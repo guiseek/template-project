@@ -1,0 +1,26 @@
+<div class="sidenav-container" fxLayout="column">
+  <mat-toolbar class="sidenav-toolbar">
+    <div fxLayout="row" fxLayoutAlign="center">
+      <div fxFlexAlign="center">
+        <button mat-icon-button (click)="toggleIconSidenav()">
+          <mat-icon
+            class="icon-sidenav-toggle fade-in-on-icon-sidenav"
+            [class.rotate]="isIconSidenav"
+            >menu_open</mat-icon
+          >
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <div class="sidenav-scrollbar-container" fxLayout="column">
+    <!-- <perfect-scrollbar> -->
+    <mat-nav-list fxLayout="column" class="sidenav-list sidenav-toplevel">
+      <ui-sidenav-item
+        *ngFor="let item of items"
+        [item]="item"
+      ></ui-sidenav-item>
+    </mat-nav-list>
+    <!-- </perfect-scrollbar> -->
+  </div>
+</div>

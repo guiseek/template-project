@@ -12,7 +12,7 @@
       "tags": []
     },
     "customer": {
-      "tags": []
+      "tags": ["app"]
     },
     "api": {
       "tags": ["feature:api", "shared"]
@@ -34,6 +34,9 @@
     },
     "core-api-common": {
       "tags": ["feature:api", "shared"]
+    },
+    "ui-nav": {
+      "tags": ["feature:shared"]
     }
   }
 }
