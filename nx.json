@@ -20,9 +20,6 @@
     "data": {
       "tags": []
     },
-    "ui": {
-      "tags": []
-    },
     "customer-api-auth": {
       "tags": ["feature:api"]
     },
