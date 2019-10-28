@@ -19,7 +19,10 @@
       "@guiseek/data": ["libs/data/src/index.ts"],
       "@guiseek/ui": ["libs/ui/src/index.ts"],
       "@guiseek/customer/api/auth": ["libs/customer/api/auth/src/index.ts"],
-      "@guiseek/customer/lazy/auth": ["libs/customer/lazy/auth/src/index.ts"]
+      "@guiseek/customer/lazy/auth": ["libs/customer/lazy/auth/src/index.ts"],
+      "@guiseek/core/api/auth": ["libs/core/api/auth/src/index.ts"],
+      "@guiseek/core/shared/auth": ["libs/core/shared/auth/src/index.ts"],
+      "@guiseek/core/api/common": ["libs/core/api/common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

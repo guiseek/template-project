@@ -1,10 +1,21 @@
 import { Module } from '@nestjs/common';
-
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { CustomerApiAuth } from '@guiseek/customer/api/auth';
+import { CoreApiCommonModule, ConfigService } from '@guiseek/core/api/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CustomerApiAuth } from '@guiseek/customer/api/auth';
+
+
 @Module({
-  imports: [CustomerApiAuth.forRoot()],
+  imports: [
+    CustomerApiAuth.forRoot(),
+    TypeOrmModule.forRootAsync({
+      imports: [CoreApiCommonModule],
+      useFactory: (configService: ConfigService) =>
+        configService.typeOrmConfig,
+      inject: [ConfigService]
+    })
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

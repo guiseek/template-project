@@ -1,3 +1,14 @@
 <p>login works!</p>
-
-<button (click)="login()">Login</button>
+<pre>{{ users | json }}</pre>
+<div *ngFor="let user of users">{{ user.email }}</div>
+<form [formGroup]="form" (ngSubmit)="onLogin()">
+  <div>
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email">
+  </div>
+  <div>
+    <label for="password">Senha</label>
+    <input type="password" id="password" formControlName="password">
+  </div>
+  <button>Login</button>
+</form>

@@ -15,7 +15,7 @@
       "tags": []
     },
     "api": {
-      "tags": []
+      "tags": ["feature:api", "shared"]
     },
     "data": {
       "tags": []
@@ -24,10 +24,19 @@
       "tags": []
     },
     "customer-api-auth": {
-      "tags": ["feature:api", "shared"]
+      "tags": ["feature:api"]
     },
     "customer-lazy-auth": {
       "tags": ["feature:lazy"]
+    },
+    "core-api-auth": {
+      "tags": ["feature:api", "shared"]
+    },
+    "core-shared-auth": {
+      "tags": ["feature:shared", "shared"]
+    },
+    "core-api-common": {
+      "tags": ["feature:api", "shared"]
     }
   }
 }

@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './containers/login/login.component';
 import { AuthLoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { CoreSharedAuthModule, CoreAuthService } from '@guiseek/core/shared/auth';
 
 
 @NgModule({
@@ -14,6 +15,13 @@ import { SignupComponent } from './components/signup/signup.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CoreSharedAuthModule.forRoot({
+      endpoint: '/api/auth',
+      redirect: {
+        success: '/',
+        failure: '/auth'
+      }
+    }),
     RouterModule.forChild([
       {
         path: '',
@@ -31,6 +39,9 @@ import { SignupComponent } from './components/signup/signup.component';
         ]
       }
     ])
+  ],
+  providers: [
+    CoreAuthService
   ],
   declarations: [LoginComponent, AuthLoginComponent, SignupComponent]
 })
