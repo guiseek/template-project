@@ -72,6 +72,19 @@
             }
           }
         },
+        "with-api": {
+          "builder": "@angular-devkit/architect:allOf",
+          "options": {
+            "targets": [
+              {
+                "target": "customer:serve"
+              },
+              {
+                "target": "api:serve"
+              }
+            ]
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {

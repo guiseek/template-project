@@ -1,17 +1,22 @@
 import { UserAccountService } from '../services/user-account.service';
 import { ApiUseTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { plainToClass } from 'class-transformer';
-import { Controller, Post, HttpCode, HttpStatus, Body, Get } from '@nestjs/common';
+import { Controller, Post, HttpCode, HttpStatus, Body, Get, UseGuards, UseInterceptors } from '@nestjs/common';
 import { LoginPayloadDto } from '../dtos/login-payload.dto';
 import { UserLoginDto } from '../dtos/user-login.dto';
 import { AuthService } from '../services/auth.service';
 import { UserAccountDto } from '../dtos/user-account.dto';
 import { UserRegisterDto } from '../dtos/user-register.dto';
 import { RoleType } from '../enums/role-type.enum';
+import { AuthGuard } from '../guards/auth.guard';
+import { AuthUserInterceptor } from '../interceptors/auth-user-account.interceptor';
+import { UserAccount } from '../entities/user-account.entity';
+import { AuthUserAccount } from '../decorators/auth-user-account.decorator';
 
-@Controller('user-account')
-@ApiUseTags('user-account')
-export class UserAccountController {
+@Controller('auth')
+@ApiUseTags('auth')
+@UseInterceptors(AuthUserInterceptor)
+export class AuthController {
   constructor(
     public readonly userService: UserAccountService,
     public readonly authService: AuthService
@@ -54,13 +59,13 @@ export class UserAccountController {
     // return createdUser.toDto();
   }
 
-  // @Get('me')
-  // @HttpCode(HttpStatus.OK)
-  // // @UseGuards(AuthGuard)
-  // // @UseInterceptors(AuthUserInterceptor)
-  // @ApiBearerAuth()
-  // @ApiOkResponse({ type: UserAccountDto, description: 'current user info' })
-  // getCurrentUser(@AuthUser() user: UserEntity) {
-  //   return user.toDto();
-  // }
+  @Get('me')
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(AuthGuard)
+  @UseInterceptors(AuthUserInterceptor)
+  @ApiBearerAuth()
+  @ApiOkResponse({ type: UserAccountDto, description: 'current user info' })
+  getCurrentUser(@AuthUserAccount() user: UserAccount) {
+    return user
+  }
 }

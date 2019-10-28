@@ -13,7 +13,7 @@ const providers = [ConfigService, ContextService];
     JwtModule.registerAsync({
       imports: [CoreApiCommonModule],
       useFactory: (configService: ConfigService) => ({
-        secretOrPrivateKey: configService.get('JWT_SECRET_KEY')
+        secret: configService.get('JWT_SECRET_KEY')
       }),
       inject: [ConfigService]
     })
