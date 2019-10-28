@@ -25,7 +25,9 @@
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "typeorm": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:sync -f=orm",
+    "migrate": "npm run typeorm migration:run"
   },
   "private": true,
   "dependencies": {
@@ -42,15 +44,20 @@
     "@nestjs/jwt": "^6.1.1",
     "@nestjs/passport": "^6.1.0",
     "@nestjs/platform-express": "^6.8.3",
+    "@nestjs/swagger": "^3.1.0",
     "@nestjs/typeorm": "^6.2.0",
     "@nrwl/angular": "^8.7.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.10.2",
     "core-js": "^2.5.4",
     "mysql": "^2.17.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
+    "request-context": "^2.0.0",
     "rxjs": "~6.4.0",
+    "swagger-ui-express": "^4.1.2",
     "typeorm": "^0.2.20",
     "zone.js": "^0.9.1"
   },
@@ -80,6 +87,7 @@
     "prettier": "1.18.2",
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
+    "tsconfig-paths": "^3.9.0",
     "tslint": "~5.11.0",
     "typescript": "~3.4.5"
   }
