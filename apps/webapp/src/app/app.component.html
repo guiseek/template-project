@@ -1,4 +1,28 @@
-<div class="toolbar" role="banner">
+<mat-toolbar color="primary">
+  <img id="logo" src="/assets/images/rocket.svg" alt="" />
+  <span>Web App</span>
+</mat-toolbar>
+
+<main>
+  <h3 class="mat-h3">Conheça nossos serviços</h3>
+</main>
+<!-- <mat-toolbar class="footer">
+  <span>Entre em contato</span>
+
+</mat-toolbar> -->
+<button
+  class="contact tooltip swing"
+  [ngClass]="{ 'trim-trim': calling }"
+  data-title="Entre em contato"
+  type="button"
+  mat-fab
+  color="accent"
+>
+  <mat-icon>phone_in_talk</mat-icon>
+</button>
+<img id="clouds" src="/assets/images/clouds.svg" alt="" />
+
+<!-- <div class="toolbar" role="banner">
   <img
     width="40"
     alt="Angular Logo"
@@ -52,7 +76,7 @@
 </div>
 
 <div class="content" role="main">
-  <!-- Highlight Card -->
+
   <div class="card highlight-card card-small">
     <svg
       id="rocket"
@@ -115,7 +139,7 @@
     </svg>
   </div>
 
-  <!-- Resources -->
+
   <h2>Recursos</h2>
   <p>Links da bibliotéca:</p>
 
@@ -214,7 +238,7 @@
     </a>
   </div>
 
-  <!-- Next Steps -->
+
   <h2>Next Steps</h2>
   <p>What do you want to do next with your app?</p>
 
@@ -326,7 +350,7 @@
     </div>
   </div>
 
-  <!-- Terminal -->
+
   <div class="terminal" [ngSwitch]="selection.value">
     <pre *ngSwitchDefault>ng generate component xyz</pre>
     <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
@@ -347,7 +371,7 @@
     ></iframe>
   </div>
 
-  <!-- Links -->
+
   <div class="card-container">
     <a
       class="circle-link"
@@ -654,7 +678,7 @@
     </a>
   </div>
 
-  <!-- Footer -->
+
   <footer>
     Love Angular?&nbsp;
     <a href="https://github.com/angular/angular" target="_blank" rel="noopener">
@@ -708,4 +732,4 @@
       fill="#eee"
     />
   </svg>
-</div>
+</div> -->
