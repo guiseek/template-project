@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CoreSecurityConfig } from './interfaces/security-config.interface';
 import { AuthenticationService } from './services/authentication.service';
 import { SECURITY_CONFIG } from './config/security-config.token';
+import { TokenService } from './services/token.service';
+import { HttpTokenInterceptor } from './interceptors/http-token.interceptor';
 
 @NgModule({
   imports: [CommonModule]
@@ -21,7 +23,9 @@ export class CoreSharedSecurityModule {
       ngModule: CoreSharedSecurityModule,
       providers: [
         { provide: SECURITY_CONFIG, useValue: config },
-        AuthenticationService
+        AuthenticationService,
+        TokenService,
+        HttpTokenInterceptor
       ]
     }
   }

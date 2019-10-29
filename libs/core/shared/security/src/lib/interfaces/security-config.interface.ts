@@ -3,10 +3,12 @@ export interface CoreSecurityConfig {
     prefix?: string;
     login: string;
     signup?: string;
+    me?: string;
   };
   auth: {
     login: {
       path: string;
+      redirectTo?: string;
       redirect?: {
         success?: string;
         failure?: string;
@@ -14,6 +16,7 @@ export interface CoreSecurityConfig {
     }
     signup: {
       path: string;
+      redirectTo?: string;
       redirect?: {
         success?: string;
         failure?: string;

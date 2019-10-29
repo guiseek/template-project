@@ -4,7 +4,8 @@ import {
   NotFoundException,
   Inject,
   forwardRef,
-  ForbiddenException
+  ForbiddenException,
+  UnauthorizedException
 } from '@nestjs/common';
 import { UserAccountDto } from '../dtos/user-account.dto';
 import { UserAccount } from '../entities/user-account.entity';
@@ -56,7 +57,7 @@ export class AuthService {
       user && user.password
     );
     if (!user || !isPasswordValid) {
-      throw new ForbiddenException('Credenciais inválidas.');
+      throw new UnauthorizedException('Credenciais inválidas.');
     }
     return user;
   }

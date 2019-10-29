@@ -16,6 +16,6 @@ export class LoginBaseComponent {
   constructor(private authSerivce: AuthenticationService) {}
 
   protected login(data) {
-    return this.authSerivce.login(data);
+    return this.authSerivce.login(data)
   }
 }

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreSharedSecurityModule, AuthGuard } from '@guiseek/core/shared/security';
-import { HttpClientModule } from '@angular/common/http';
+import { CoreSharedSecurityModule, AuthGuard, HttpTokenInterceptor } from '@guiseek/core/shared/security';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,25 +12,16 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     CoreSharedSecurityModule.forRoot({
-      api: {
-        prefix: '/api',
-        login: '/auth/login'
-      },
+      api: { prefix: '/api', login: '/auth/login', me: '/auth/me' },
       auth: {
-        login: {
-          path: '/auth'
-        },
-        signup: {
-          path: '/auth/signup'
-        }
+        login: { path: '/auth', redirectTo: '/' },
+        signup: { path: '/auth/signup', redirectTo: '/' }
       }
     }),
     RouterModule.forRoot(
       [
-        // { path: '', redirectTo: 'account', pathMatch: 'full' },
         {
           path: 'auth',
-          // canActivate: [AuthCustomerGuard],
           loadChildren: () =>
             import('@guiseek/customer/lazy/auth').then(
               m => m.CustomerLazyAuthModule
@@ -48,10 +39,11 @@ import { HttpClientModule } from '@angular/common/http';
       ],
       { initialNavigation: 'enabled' }
     ),
-    // CoreSharedAuthModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

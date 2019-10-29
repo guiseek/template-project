@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 import { SECURITY_CONFIG } from '../config/security-config.token';
 import { CoreSecurityConfig } from '../interfaces/security-config.interface';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,6 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // return true;
     return this.checkLogin(state.url);
   }
   checkLogin(url: string) {
@@ -29,11 +29,17 @@ export class AuthGuard implements CanActivate {
     console.log(this.service.config)
     this.service.redirectUrl = url;
 
+    return this.service.validate()
+      .pipe(
+        map((auth) => !!auth),
+        tap(auth => !auth && this.doRedirect())
+      );
+  }
+  doRedirect() {
     if (this.config && this.config.auth) {
       this.router.navigateByUrl(
         this.config.auth.login.path
       );
     }
-    return false;
   }
 }

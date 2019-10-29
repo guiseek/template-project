@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { UiSharedModule } from '@guiseek/ui/shared';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CoreSharedSecurityModule, AuthGuard } from '@guiseek/core/shared/security';
+import { CoreSharedSecurityModule, AuthGuard, HttpTokenInterceptor } from '@guiseek/core/shared/security';
 // import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UiNavModule } from '@guiseek/ui/nav';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { CoreSharedAuthModule } from '@guiseek/core/shared/auth';
 // import { CoreSharedAuthModule, CoreAuthGuard, TokenInterceptor } from '@guiseek/core/shared/auth';
 
@@ -72,7 +73,7 @@ import { UiNavModule } from '@guiseek/ui/nav';
   ],
   declarations: [MainComponent],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }
   ]
 })
 export class CustomerLazyAccountModule { }
