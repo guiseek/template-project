@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from './containers/login/login.component';
-import { AuthLoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { CustomerLoginComponent } from './components/login/login.component';
+import { CustomerSignupComponent } from './components/signup/signup.component';
+import { CoreSharedAuthModule } from '@guiseek/core/shared/auth';
 import {
-  CoreSharedAuthModule,
-  CoreAuthService
-} from '@guiseek/core/shared/auth';
-import { MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule
+} from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthContainerComponent } from './containers/auth-container/auth-container.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    CoreSharedAuthModule,
     // CoreSharedAuthModule.forRoot({
     //   endpoint: '/api/auth',
     //   redirect: {
@@ -31,22 +34,31 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RouterModule.forChild([
       {
         path: '',
-        pathMatch: 'full',
-        component: LoginComponent,
+        // pathMatch: 'full',
+        component: AuthContainerComponent,
         children: [
           {
             path: '',
-            component: AuthLoginComponent
+            redirectTo: 'login',
+            pathMatch: 'full'
+          },
+          {
+            path: 'login',
+            component: CustomerLoginComponent
           },
           {
             path: 'signup',
-            component: SignupComponent
+            component: CustomerSignupComponent
           }
         ]
       }
     ])
   ],
   // providers: [CoreAuthService],
-  declarations: [LoginComponent, AuthLoginComponent, SignupComponent]
+  declarations: [
+    CustomerLoginComponent,
+    CustomerSignupComponent,
+    AuthContainerComponent
+  ]
 })
-export class CustomerLazyAuthModule { }
+export class CustomerLazyAuthModule {}

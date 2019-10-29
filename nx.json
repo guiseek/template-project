@@ -51,7 +51,7 @@
       "tags": ["feature:shared"]
     },
     "core-shared-security": {
-      "tags": ["feature:shared"]
+      "tags": ["feature:shared", "shared"]
     }
   }
 }

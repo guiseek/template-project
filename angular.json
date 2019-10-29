@@ -23,7 +23,12 @@
             "aot": false,
             "assets": [
               "apps/customer/src/favicon.ico",
-              "apps/customer/src/assets"
+              "apps/customer/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./libs/shared/assets/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",

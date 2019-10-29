@@ -5,8 +5,5 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CustomerAccountService {
-
-  constructor(
-    private _http: HttpClient
-  ) { }
+  constructor(private _http: HttpClient) {}
 }

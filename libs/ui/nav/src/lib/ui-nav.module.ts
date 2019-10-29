@@ -19,6 +19,8 @@ import { NavItem } from './interfaces/nav-config.interfaces';
 import { NavService } from './services/nav.service';
 import { NAV_ITEMS } from './config/nav.config';
 import { WindowToken, windowProvider } from './utils/window';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { UserMenuButtonComponent } from './components/user-menu/user-menu-button/user-menu-button.component';
 
 const matModules = [
   MatToolbarModule,
@@ -38,7 +40,9 @@ const matModules = [
     SidenavItemComponent,
     SearchComponent,
     SearchBoxComponent,
-    SidenavToggleDirective
+    SidenavToggleDirective,
+    UserMenuComponent,
+    UserMenuButtonComponent
   ],
   exports: [
     ToolbarComponent,
@@ -46,7 +50,9 @@ const matModules = [
     SidenavItemComponent,
     SearchComponent,
     SearchBoxComponent,
-    SidenavToggleDirective
+    SidenavToggleDirective,
+    UserMenuComponent,
+    UserMenuButtonComponent
   ],
   providers: [{ provide: WindowToken, useFactory: windowProvider }]
 })

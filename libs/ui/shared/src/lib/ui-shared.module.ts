@@ -10,7 +10,8 @@ import {
   MatToolbarModule,
   MatProgressSpinnerModule,
   MatDialogModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatMenuModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -26,7 +27,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   exports: [
     MatInputModule,
@@ -38,7 +41,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatMenuModule,
+    MatDialogModule
   ]
 })
 export class UiSharedModule {}
