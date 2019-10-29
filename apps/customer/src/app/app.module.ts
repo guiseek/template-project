@@ -4,31 +4,35 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { UiNavModule } from '@guiseek/ui/nav';
+import { UiSharedModule } from '@guiseek/ui/shared';
+
 import { AuthCustomerModule } from './auth-customer/auth-customer.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthCustomerGuard } from './auth-customer/services/auth-customer.guard';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     FlexLayoutModule,
+    UiSharedModule,
     UiNavModule.forRoot([
       {
         name: 'Home',
         icon: 'home',
-        link: '/home'
+        link: '/'
       },
       {
-        name: 'Dashboard',
-        icon: 'dashboard',
-        link: '/dashboard'
+        name: 'Login',
+        icon: 'person',
+        link: '/auth'
       },
       {
-        name: 'Admin',
-        icon: 'security',
-        link: '/admin'
+        name: 'Account',
+        icon: 'account_circle',
+        link: '/account'
       },
       {
         name: 'Grid',
@@ -48,12 +52,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         ]
       }
     ]),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot([
+      { path: '', redirectTo: 'account', pathMatch: 'full' },
+      {
+        path: 'account',
+        // canActivate: [AuthCustomerGuard],
+        loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
+      }
+    ], { initialNavigation: 'enabled' }),
     AuthCustomerModule,
-    BrowserAnimationsModule,
-    MaterialModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

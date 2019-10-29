@@ -22,7 +22,9 @@
       "@guiseek/core/api/auth": ["libs/core/api/auth/src/index.ts"],
       "@guiseek/core/shared/auth": ["libs/core/shared/auth/src/index.ts"],
       "@guiseek/core/api/common": ["libs/core/api/common/src/index.ts"],
-      "@guiseek/ui/nav": ["libs/ui/nav/src/index.ts"]
+      "@guiseek/ui/nav": ["libs/ui/nav/src/index.ts"],
+      "@guiseek/ui/shared": ["libs/ui/shared/src/index.ts"],
+      "@guiseek/core/shared/web": ["libs/core/shared/web/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

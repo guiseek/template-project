@@ -3,6 +3,7 @@ import { UserAccountRepository } from '../repositories/user-account.repository';
 import { FindConditions } from 'typeorm';
 import { UserAccount } from '../entities/user-account.entity';
 import { UserRegisterDto } from '../dtos/user-register.dto';
+import { UtilsService } from '@guiseek/core/api/common';
 
 @Injectable()
 export class UserAccountService {
@@ -30,7 +31,7 @@ export class UserAccountService {
   }
 
   async createUser(
-    userRegisterDto: UserRegisterDto
+    dto: UserRegisterDto
     // file: IFile,
   ): Promise<UserAccount> {
     // let avatar: string;
@@ -41,8 +42,10 @@ export class UserAccountService {
     // if (file) {
     //   avatar = await this.awsS3Service.uploadImage(file);
     // }
-
-    const user = this.repository.create({ ...userRegisterDto });
+    const user = this.repository.create({
+      ...dto,
+      password: UtilsService.generateHash(dto.password)
+    });
 
     return this.repository.save(user);
   }

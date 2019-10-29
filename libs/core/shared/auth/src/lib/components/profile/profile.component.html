@@ -1,0 +1,23 @@
+<form fxLayout="column" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input type="text" matInput formControlName="id" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Permissão</mat-label>
+    <input type="text" matInput formControlName="id" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" />
+  </mat-form-field>
+  <!-- <mat-form-field appearance="outline">
+    <mat-label>Foto</mat-label>
+    <input type="text" matInput formControlName="id">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Permissão</mat-label>
+    <input type="text" matInput formControlName="id">
+  </mat-form-field> -->
+  <button mat-flat-button>Salvar</button>
+</form>

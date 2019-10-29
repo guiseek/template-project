@@ -1,14 +1,11 @@
-<p>login works!</p>
-<pre>{{ users | json }}</pre>
-<div *ngFor="let user of users">{{ user.email }}</div>
-<form [formGroup]="form" (ngSubmit)="onLogin()">
-  <div>
-    <label for="email">Email</label>
-    <input type="email" id="email" formControlName="email">
-  </div>
-  <div>
-    <label for="password">Senha</label>
-    <input type="password" id="password" formControlName="password">
-  </div>
-  <button>Login</button>
+<form fxLayout="column" [formGroup]="form" (ngSubmit)="onLogin()">
+  <mat-form-field>
+    <mat-label for="email">Email</mat-label>
+    <input matInput type="email" id="email" formControlName="email" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label for="password">Senha</mat-label>
+    <input matInput type="password" id="password" formControlName="password" />
+  </mat-form-field>
+  <button mat-flat-button color="primary">Login</button>
 </form>

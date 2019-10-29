@@ -1,6 +1,9 @@
 import { UserAccount } from './user-account.interface';
 
 export interface JwtPayload {
-  token: string;
+  token: {
+    accessToken: string;
+    expiresIn: number;
+  };
   user: UserAccount;
 }

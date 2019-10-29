@@ -18,10 +18,10 @@
       "tags": ["feature:api", "shared"]
     },
     "data": {
-      "tags": []
+      "tags": ["shared"]
     },
     "customer-api-auth": {
-      "tags": ["feature:api"]
+      "tags": ["feature:api", "shared"]
     },
     "customer-lazy-auth": {
       "tags": ["feature:lazy"]
@@ -36,7 +36,13 @@
       "tags": ["feature:api", "shared"]
     },
     "ui-nav": {
-      "tags": ["feature:shared"]
+      "tags": ["feature:shared", "shared"]
+    },
+    "ui-shared": {
+      "tags": ["feature:shared", "shared"]
+    },
+    "core-shared-web": {
+      "tags": ["feature:shared", "shared"]
     }
   }
 }

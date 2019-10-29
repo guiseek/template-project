@@ -102,10 +102,7 @@
               "apps/customer/tsconfig.app.json",
               "apps/customer/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/customer/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/customer/**"]
           }
         },
         "test": {
@@ -139,13 +136,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/customer-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/customer-e2e/**"
-            ]
+            "tsConfig": ["apps/customer-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/customer-e2e/**"]
           }
         }
       }
@@ -163,9 +155,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -194,10 +184,7 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/api/**"]
           }
         },
         "test": {
@@ -222,10 +209,7 @@
               "libs/data/tsconfig.lib.json",
               "libs/data/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/data/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/data/**"]
           }
         },
         "test": {
@@ -250,10 +234,7 @@
               "libs/customer/api/auth/tsconfig.lib.json",
               "libs/customer/api/auth/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/customer/api/auth/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/customer/api/auth/**"]
           }
         },
         "test": {
@@ -278,10 +259,7 @@
               "libs/customer/lazy/auth/tsconfig.lib.json",
               "libs/customer/lazy/auth/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/customer/lazy/auth/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/customer/lazy/auth/**"]
           }
         },
         "test": {
@@ -312,10 +290,7 @@
               "libs/core/api/auth/tsconfig.lib.json",
               "libs/core/api/auth/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/core/api/auth/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/core/api/auth/**"]
           }
         },
         "test": {
@@ -340,10 +315,7 @@
               "libs/core/shared/auth/tsconfig.lib.json",
               "libs/core/shared/auth/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/core/shared/auth/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/core/shared/auth/**"]
           }
         },
         "test": {
@@ -374,10 +346,7 @@
               "libs/core/api/common/tsconfig.lib.json",
               "libs/core/api/common/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/core/api/common/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/core/api/common/**"]
           }
         },
         "test": {
@@ -402,10 +371,7 @@
               "libs/ui/nav/tsconfig.lib.json",
               "libs/ui/nav/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ui/nav/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/ui/nav/**"]
           }
         },
         "test": {
@@ -420,6 +386,58 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "ui-shared": {
+      "projectType": "library",
+      "root": "libs/ui/shared",
+      "sourceRoot": "libs/ui/shared/src",
+      "prefix": "guiseek",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/shared/tsconfig.lib.json",
+              "libs/ui/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/shared/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/shared/jest.config.js",
+            "tsConfig": "libs/ui/shared/tsconfig.spec.json",
+            "setupFile": "libs/ui/shared/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "core-shared-web": {
+      "root": "libs/core/shared/web",
+      "sourceRoot": "libs/core/shared/web/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/shared/web/tsconfig.lib.json",
+              "libs/core/shared/web/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/shared/web/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core/shared/web/jest.config.js",
+            "tsConfig": "libs/core/shared/web/tsconfig.spec.json"
+          }
         }
       }
     }

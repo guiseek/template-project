@@ -22,9 +22,9 @@ export class LoginBaseComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.authSerivce.getUsers();
-    this.afterGetHeroes();
+    // this.afterGetHeroes();
   }
-  protected afterGetHeroes() { }
+  // protected afterGetHeroes() { }
 
   protected login(data) {
     return this.authSerivce.login(data)

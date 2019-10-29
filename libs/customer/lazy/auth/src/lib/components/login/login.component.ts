@@ -31,12 +31,12 @@ export class AuthLoginComponent extends LoginBaseComponent {
       console.log('data: ', data)
     })
   }
-  protected afterGetHeroes() {
-    this.users = this.users.sort((u1, u2) => {
-      return u1.email < u2.email ? -1 :
-        (u1.email > u2.email ? 1 : 0);
-    });
-  }
+  // protected afterGetHeroes() {
+  //   this.users = this.users.sort((u1, u2) => {
+  //     return u1.email < u2.email ? -1 :
+  //       (u1.email > u2.email ? 1 : 0);
+  //   });
+  // }
   // ngOnInit() {
   // }
   onLogin() {

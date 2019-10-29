@@ -9,7 +9,9 @@ export class CustomerApiAuth implements NestModule {
   static forRoot(): DynamicModule {
     return {
       module: CustomerApiAuth,
-      providers: []
+      providers: [
+        AuthService
+      ]
     }
   }
   public configure() {

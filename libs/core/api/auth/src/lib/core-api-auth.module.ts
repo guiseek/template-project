@@ -11,7 +11,7 @@ import { UserAccountService } from './services/user-account.service';
 @Module({
   imports: [
     TypeOrmModule.forFeature([UserAccount]),
-    PassportModule.register({ defaultStrategy: 'jwt' })
+    PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   providers: [AuthService, JwtStrategy, UserAccountService],
   controllers: [AuthController, UserAccountController],

@@ -2,7 +2,7 @@ import { Module, forwardRef, NestModule, MiddlewareConsumer } from '@nestjs/comm
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CustomerApiAuth } from '@guiseek/customer/api/auth';
 import { CoreApiCommonModule, ConfigService, contextMiddleware } from '@guiseek/core/api/common';
-import { CoreApiAuthModule } from '@guiseek/core/api/auth';
+import { CoreApiAuthModule, AUTH_ENTITIES } from '@guiseek/core/api/auth';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -13,7 +13,7 @@ import { AppService } from './app.service';
     CustomerApiAuth.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [CoreApiCommonModule],
-      useFactory: (configService: ConfigService) => configService.typeOrmConfig,
+      useFactory: (configService: ConfigService) => configService.getTypeOrmConfig(AUTH_ENTITIES),
       inject: [ConfigService]
     })
   ],

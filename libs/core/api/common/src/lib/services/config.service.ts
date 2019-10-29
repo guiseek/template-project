@@ -1,6 +1,5 @@
 import * as dotenv from 'dotenv';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { UserAccount } from '@guiseek/core/api/auth';
 // import { snakeCase } from 'typeorm/util/StringUtils';
 
 export class ConfigService {
@@ -28,12 +27,11 @@ export class ConfigService {
     return this.get('NODE_ENV') || 'development';
   }
 
-  get typeOrmConfig(): TypeOrmModuleOptions {
-    // let entities = [__dirname + '/../../modules/**/*.entity{.ts,.js}'];
+  getTypeOrmConfig(entities?): TypeOrmModuleOptions {
     // let entities = [__dirname + '/../../../**/*.entity{.ts,.js}'];
     // let migrations = [__dirname + '/../../migrations/*{.ts,.js}'];
-    // console.log('entities: ', entities);
-    const entities = [UserAccount]
+    // const entities = [UserAccount]
+
     /**
      * @reference `module.hot` https://docs.nestjs.com/techniques/hot-reload#hot-module-replacement
      */

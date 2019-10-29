@@ -1,11 +1,11 @@
 import { JwtService } from '@nestjs/jwt';
-import { Injectable, NotFoundException, Inject, forwardRef } from '@nestjs/common';
+import { Injectable, NotFoundException, Inject, forwardRef, ForbiddenException } from '@nestjs/common';
 import { UserAccountDto } from '../dtos/user-account.dto';
 import { UserAccount } from '../entities/user-account.entity';
 import { TokenPayloadDto } from '../dtos/token.payload.dto';
 import { UserAccountService } from './user-account.service';
 import { UserLoginDto } from '../dtos/user-login.dto';
-import { ContextService, ConfigService } from '@guiseek/core/api/common';
+import { ContextService, ConfigService, UtilsService } from '@guiseek/core/api/common';
 
 @Injectable()
 export class AuthService {
@@ -40,14 +40,12 @@ export class AuthService {
     const user = await this.userService.findOne({
       email: userLoginDto.email
     });
-    // const isPasswordValid = await UtilsService.validateHash(
-    //   userLoginDto.password,
-    //   user && user.password,
-    // );
-    const isPasswordValid = true;
+    const isPasswordValid = await UtilsService.validateHash(
+      userLoginDto.password,
+      user && user.password,
+    );
     if (!user || !isPasswordValid) {
-      throw new NotFoundException();
-      // throw new UserNotFoundException();
+      throw new ForbiddenException('Credenciais inválidas.');
     }
     return user;
   }
