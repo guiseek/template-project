@@ -2,10 +2,21 @@
   display: flex;
   flex-flow: column;
   height: 100%;
-  justify-content: space-between;
+  // justify-content: space-between;
   background: url('/assets/images/smoke.svg') center center no-repeat;
 }
+main {
+  margin: 24px 16px;
+}
 
+::ng-deep .mat-fab.whats-app .mat-button-wrapper {
+  padding: 8px;
+  .mat-icon {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+  }
+}
 .mat-toolbar {
   display: flex;
   flex-flow: row;
@@ -26,14 +37,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-}
-img#clouds {
-  position: fixed;
-  bottom: -160px;
-  left: -230px;
-  z-index: -10;
-  width: 1920px;
-  z-index: 1;
 }
 
 // :host {

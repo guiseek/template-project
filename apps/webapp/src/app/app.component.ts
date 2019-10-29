@@ -10,10 +10,12 @@ export class AppComponent implements OnInit {
 
   calling = false;
 
-
   ngOnInit() {
     window.setInterval(() => {
       this.calling = !this.calling;
-    }, 3000)
+    }, 10000)
+  }
+  onCall() {
+    // window.open('<a href="whatsapp://tel:3216541234')
   }
 }
