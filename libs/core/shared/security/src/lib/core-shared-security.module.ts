@@ -1,4 +1,4 @@
-import { NgModule, Optional, SkipSelf, ModuleWithProviders, ModuleWithComponentFactories } from '@angular/core';
+import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreSecurityConfig } from './interfaces/security-config.interface';
 import { AuthenticationService } from './services/authentication.service';

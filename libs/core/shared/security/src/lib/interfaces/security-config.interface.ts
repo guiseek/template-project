@@ -21,6 +21,9 @@ export interface CoreSecurityConfig {
         success?: string;
         failure?: string;
       }
+    },
+    logout: {
+      redirectTo: string;
     }
   }
 }

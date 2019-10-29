@@ -14,8 +14,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     CoreSharedSecurityModule.forRoot({
       api: { prefix: '/api', login: '/auth/login', me: '/auth/me' },
       auth: {
-        login: { path: '/auth', redirectTo: '/' },
-        signup: { path: '/auth/signup', redirectTo: '/' }
+        login: { path: '/auth/login', redirectTo: '/' },
+        signup: { path: '/auth/signup', redirectTo: '/' },
+        logout: { redirectTo: '/auth/login' }
       }
     }),
     RouterModule.forRoot(

@@ -1,1 +1,33 @@
-<p>login works!</p>
+<form fxLayout="column" [formGroup]="form" (ngSubmit)="login()">
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+    <mat-form-field fxFlex>
+      <mat-label for="email">Email</mat-label>
+      <input matInput type="email" id="email" formControlName="email" tabindex="1" />
+      <mat-error>Email inválido</mat-error>
+    </mat-form-field>
+    <mat-hint fxFlex>ou</mat-hint>
+    <mat-form-field fxFlex="120px">
+      <mat-label for="username">Usuário</mat-label>
+      <input matInput type="text" id="username" formControlName="username" tabindex="3" />
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <mat-label for="password">Senha</mat-label>
+    <input matInput type="password" id="password" formControlName="password" tabindex="2" />
+  </mat-form-field>
+  <button mat-flat-button color="primary">Login</button>
+
+  <div class="" fxFlex="row" fxLayoutAlign="space-between">
+    <a [routerLink]="signUp" mat-button>Criar conta</a>
+
+    <button type="button" mat-button [matMenuTriggerFor]="passwordMenu">
+      <span>Esqueceu?</span>
+    </button>
+  </div>
+</form>
+<mat-menu #passwordMenu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="forgotPassword()">Esqueci minha senha</button>
+  <button mat-menu-item (click)="openResetPassword()">
+    Configurar nova senha
+  </button>
+</mat-menu>

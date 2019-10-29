@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SECURITY_CONFIG } from '../config/security-config.token';
 import { CoreSecurityConfig } from '../interfaces/security-config.interface';
-import { UserAccount, JwtPayload } from '@guiseek/core/shared/auth';
+import { UserAccount, JwtPayload } from '../interfaces';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -49,6 +49,15 @@ export class AuthenticationService {
   onError(err) {
     console.log(err)
     this.serverMessage = err.message
+  }
+  logout() {
+    this._tokenService.reset();
+    const { auth } = this.config;
+    if (auth.logout && auth.logout.redirectTo) {
+      this.router.navigate([auth.logout.redirectTo]);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
   validate() {
     return this._http.get(

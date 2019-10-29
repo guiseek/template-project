@@ -28,7 +28,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private cd: ChangeDetectorRef,
     @Inject(WindowToken) private window: Window
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.sub = this.service.items$.subscribe((items: NavItem[]) => {

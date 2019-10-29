@@ -1,5 +1,8 @@
 @import '~@angular/material/theming';
 
+/**
+ * Toolbar
+ */
 $toolbar-background: white;
 $toolbar-height: 64px;
 $toolbar-z-index: 500;
@@ -9,14 +12,17 @@ $spacing: 26px;
 $toolbar-button-width: 64px;
 // $toolbar-button-icon-color: $theme-icon;
 $toolbar-elevation: 2;
-
 $z-index__main-toolbar: 500;
-
+$height__main-toolbar: 64px;
+$z-index__main-toolbar: 500;
 $height__main-toolbar: 64px;
 
-$z-index__main-toolbar: 500;
+$mat-toolbar-height-desktop: 64px !default;
+$mat-toolbar-height-mobile-portrait: 56px !default;
+$mat-toolbar-height-mobile-landscape: 48px !default;
 
-$height__main-toolbar: 64px;
+// User menu
+
 
 // Sidenav
 
