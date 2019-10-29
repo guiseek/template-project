@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { CoreAuthService, LoginBaseComponent } from '@guiseek/core/shared/auth';
+import { AuthenticationService } from '@guiseek/core/shared/security';
 
 @Component({
   selector: 'auth-login',
@@ -16,7 +17,7 @@ import { CoreAuthService, LoginBaseComponent } from '@guiseek/core/shared/auth';
 export class AuthLoginComponent extends LoginBaseComponent {
   users: Array<any>;
 
-  constructor(private authService: CoreAuthService) {
+  constructor(private authService: AuthenticationService) {
     super(authService);
 
     this.authService.user$.subscribe(data => {

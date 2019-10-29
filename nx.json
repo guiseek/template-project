@@ -46,6 +46,12 @@
     },
     "customer-lazy-account": {
       "tags": ["feature:lazy"]
+    },
+    "customer-shared-account": {
+      "tags": ["feature:shared"]
+    },
+    "core-shared-security": {
+      "tags": ["feature:shared"]
     }
   }
 }

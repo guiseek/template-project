@@ -27,6 +27,12 @@
       "@guiseek/core/shared/web": ["libs/core/shared/web/src/index.ts"],
       "@guiseek/customer/lazy/account": [
         "libs/customer/lazy/account/src/index.ts"
+      ],
+      "@guiseek/customer/shared/account": [
+        "libs/customer/shared/account/src/index.ts"
+      ],
+      "@guiseek/core/shared/security": [
+        "libs/core/shared/security/src/index.ts"
       ]
     }
   },

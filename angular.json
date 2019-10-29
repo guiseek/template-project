@@ -471,6 +471,67 @@
           "styleext": "scss"
         }
       }
+    },
+    "customer-shared-account": {
+      "projectType": "library",
+      "root": "libs/customer/shared/account",
+      "sourceRoot": "libs/customer/shared/account/src",
+      "prefix": "account",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer/shared/account/tsconfig.lib.json",
+              "libs/customer/shared/account/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/customer/shared/account/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer/shared/account/jest.config.js",
+            "tsConfig": "libs/customer/shared/account/tsconfig.spec.json",
+            "setupFile": "libs/customer/shared/account/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "core-shared-security": {
+      "projectType": "library",
+      "root": "libs/core/shared/security",
+      "sourceRoot": "libs/core/shared/security/src",
+      "prefix": "guiseek",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/shared/security/tsconfig.lib.json",
+              "libs/core/shared/security/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/shared/security/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core/shared/security/jest.config.js",
+            "tsConfig": "libs/core/shared/security/tsconfig.spec.json",
+            "setupFile": "libs/core/shared/security/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

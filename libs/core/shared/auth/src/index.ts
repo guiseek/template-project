@@ -4,3 +4,4 @@ export * from './lib/components/login/login.component';
 export * from './lib/config/core-auth.config';
 export * from './lib/interfaces/index';
 export * from './lib/interceptors/token.interceptor';
+export * from './lib/guards/core-auth.guard';
