@@ -8,22 +8,22 @@ export interface CoreSecurityConfig {
   auth: {
     login: {
       path: string;
-      redirectTo?: string;
+      redirectTo: string;
       redirect?: {
         success?: string;
         failure?: string;
-      }
-    }
+      };
+    };
     signup: {
       path: string;
-      redirectTo?: string;
+      redirectTo: string;
       redirect?: {
         success?: string;
         failure?: string;
-      }
-    },
+      };
+    };
     logout: {
       redirectTo: string;
-    }
-  }
+    };
+  };
 }

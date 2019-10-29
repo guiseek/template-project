@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TokenService {
-
-  constructor() { }
+  constructor() {}
 
   get token() {
     return window.localStorage.getItem('token');
@@ -19,6 +18,6 @@ export class TokenService {
   get headers() {
     return {
       Authorization: `Bearer ${this.token}`
-    }
+    };
   }
 }

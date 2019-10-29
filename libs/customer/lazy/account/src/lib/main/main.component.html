@@ -1,8 +1,8 @@
 <ui-toolbar>
-  <ui-user-menu>
-    <ui-user-menu-button>
-      <img src="assets/drum.svg" alt="">
-      <span>Usuário</span>
+  <ui-user-menu (logout)="onLogout()">
+    <ui-user-menu-button *ngIf="user$ | async as user">
+      <img src="assets/drum.svg" alt="" />
+      <span>{{ user.email }}</span>
     </ui-user-menu-button>
   </ui-user-menu>
 </ui-toolbar>
@@ -20,8 +20,5 @@
   </mat-sidenav>
   <mat-sidenav-content class="content-container" fxLayout="column">
     <p>main works!</p>
-    <button type="button" mat-button (click)="login()">
-      Login
-    </button>
   </mat-sidenav-content>
 </mat-sidenav-container>

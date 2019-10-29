@@ -4,6 +4,7 @@
 ::ng-deep .user-menu-button {
   display: flex;
   align-items: center;
+  max-width: 160px;
   img {
     width: 30px;
     height: 30px;
@@ -13,6 +14,9 @@
     display: inline-block;
     margin: 0 8px 0 10px;
     font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 .user-container {

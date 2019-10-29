@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpErrorResponse
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { TokenService } from '../services/token.service';
 import { catchError } from 'rxjs/operators';
@@ -8,9 +14,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HttpTokenInterceptor implements HttpInterceptor {
-  constructor(
-    private _tokenService: TokenService
-  ) { }
+  constructor(private _tokenService: TokenService) {}
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -21,15 +25,15 @@ export class HttpTokenInterceptor implements HttpInterceptor {
       });
 
       return next.handle(request).pipe(
-        catchError((err) => {
+        catchError(err => {
           this.catchRedirectError(err);
           return throwError(err);
         })
-      )
+      );
     }
   }
   catchRedirectError(err: any): void {
-    console.log('err: ', err)
+    console.log('err: ', err);
     if (err instanceof HttpErrorResponse) {
       if (err.status === 401) {
         this._tokenService.reset();

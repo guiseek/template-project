@@ -16,7 +16,7 @@ const components = [
   ChangePasswordComponent,
   SignupComponent,
   ForgotPasswordComponent
-]
+];
 @NgModule({
   imports: [
     CommonModule,
@@ -29,54 +29,53 @@ const components = [
   entryComponents: [ForgotPasswordComponent, ChangePasswordComponent],
   exports: [...components]
 })
-export class CoreSharedAuthModule { }
+export class CoreSharedAuthModule {}
 
-  // constructor(@Optional() @SkipSelf() parentModule: CoreSharedAuthModule) {
-  //   if (parentModule) {
-  //     throw new Error(
-  //       'CoreSharedAuthModule is already loaded. Import it in the AppModule only'
-  //     );
-  //   }
-  // }
-  // static forRoot({
-  //   jwtConfig,
-  //   ...config
-  // }: CoreAuthConfig): ModuleWithProviders {
-  //   return {
-  //     ngModule: CoreSharedAuthModule,
-  //     providers: [
-  //       CoreAuthService,
-  //       {
-  //         provide: CORE_AUTH_CONFIG_TOKEN,
-  //         useValue: { ...CORE_AUTH_CONFIG, ...config }
-  //       },
-  //       {
-  //         provide: CORE_JWT_CONFIG_TOKEN,
-  //         useValue: { ...CORE_JWT_CONFIG, ...jwtConfig }
-  //       },
-  //       ...CoreWebProviders,
-  //       CoreTokenService,
-  //       TokenInterceptor,
-  //       CoreAuthService,
-  //       CoreAuthGuard,
-  //       {
-  //         provide: APP_INITIALIZER,
-  //         useFactory: tokenServiceInitializeApp,
-  //         multi: true,
-  //         deps: [CoreTokenService]
-  //       },
-  //       {
-  //         provide: HTTP_INTERCEPTORS,
-  //         useExisting: TokenInterceptor,
-  //         multi: true
-  //       },
-  //       {
-  //         provide: APP_INITIALIZER,
-  //         useFactory: authServiceInitializeApp,
-  //         multi: true,
-  //         deps: [CoreAuthService]
-  //       },
-  //     ]
-  //   };
-  // }
-
+// constructor(@Optional() @SkipSelf() parentModule: CoreSharedAuthModule) {
+//   if (parentModule) {
+//     throw new Error(
+//       'CoreSharedAuthModule is already loaded. Import it in the AppModule only'
+//     );
+//   }
+// }
+// static forRoot({
+//   jwtConfig,
+//   ...config
+// }: CoreAuthConfig): ModuleWithProviders {
+//   return {
+//     ngModule: CoreSharedAuthModule,
+//     providers: [
+//       CoreAuthService,
+//       {
+//         provide: CORE_AUTH_CONFIG_TOKEN,
+//         useValue: { ...CORE_AUTH_CONFIG, ...config }
+//       },
+//       {
+//         provide: CORE_JWT_CONFIG_TOKEN,
+//         useValue: { ...CORE_JWT_CONFIG, ...jwtConfig }
+//       },
+//       ...CoreWebProviders,
+//       CoreTokenService,
+//       TokenInterceptor,
+//       CoreAuthService,
+//       CoreAuthGuard,
+//       {
+//         provide: APP_INITIALIZER,
+//         useFactory: tokenServiceInitializeApp,
+//         multi: true,
+//         deps: [CoreTokenService]
+//       },
+//       {
+//         provide: HTTP_INTERCEPTORS,
+//         useExisting: TokenInterceptor,
+//         multi: true
+//       },
+//       {
+//         provide: APP_INITIALIZER,
+//         useFactory: authServiceInitializeApp,
+//         multi: true,
+//         deps: [CoreAuthService]
+//       },
+//     ]
+//   };
+// }

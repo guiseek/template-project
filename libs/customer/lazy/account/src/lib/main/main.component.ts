@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '@guiseek/core/shared/security';
+import { AuthenticationService, UserAccount } from '@guiseek/core/shared/security';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'customer-main',
@@ -9,16 +10,13 @@ import { AuthenticationService } from '@guiseek/core/shared/security';
 export class MainComponent implements OnInit {
   sidenavOpen = true;
   sidenavMode = 'side';
-  constructor(
-    private auth: AuthenticationService
-  ) { }
+  user$: Observable<UserAccount>;
+  constructor(private auth: AuthenticationService) {}
 
   ngOnInit() {
+    this.user$ = this.auth.validate()
   }
-  login() {
-    this.auth.login({
-      username: 'guiseek',
-      password: 'gui'
-    }).subscribe(console.table)
+  onLogout() {
+    this.auth.logout()
   }
 }

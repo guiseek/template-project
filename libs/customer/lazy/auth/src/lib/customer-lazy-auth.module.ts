@@ -4,7 +4,12 @@ import { RouterModule } from '@angular/router';
 import { CustomerLoginComponent } from './components/login/login.component';
 import { CustomerSignupComponent } from './components/signup/signup.component';
 import { CoreSharedAuthModule } from '@guiseek/core/shared/auth';
-import { MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule
+} from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthContainerComponent } from './containers/auth-container/auth-container.component';
@@ -50,6 +55,10 @@ import { AuthContainerComponent } from './containers/auth-container/auth-contain
     ])
   ],
   // providers: [CoreAuthService],
-  declarations: [CustomerLoginComponent, CustomerSignupComponent, AuthContainerComponent]
+  declarations: [
+    CustomerLoginComponent,
+    CustomerSignupComponent,
+    AuthContainerComponent
+  ]
 })
-export class CustomerLazyAuthModule { }
+export class CustomerLazyAuthModule {}

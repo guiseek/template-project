@@ -7,7 +7,7 @@ import { CustomerAccountService } from './services/customer-account.service';
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
+    HttpClientModule
     // CoreSharedAuthModule.forRoot({})
   ],
   providers: [

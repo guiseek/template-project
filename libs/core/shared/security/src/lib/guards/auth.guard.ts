@@ -1,5 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+  Router
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 import { SECURITY_CONFIG } from '../config/security-config.token';
@@ -15,31 +21,31 @@ export class AuthGuard implements CanActivate {
     private service: AuthenticationService,
     private router: Router
   ) {
-    console.log(config)
   }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return this.checkLogin(state.url);
   }
   checkLogin(url: string) {
-    if (this.service.isLoggedIn) { return true }
-
-    console.log(this.service.config)
+    if (this.service.isLoggedIn) {
+      return true;
+    }
     this.service.redirectUrl = url;
 
-    return this.service.validate()
-      .pipe(
-        map((auth) => !!auth),
-        tap(auth => !auth && this.doRedirect())
-      );
+    return this.service.validate().pipe(
+      map(auth => !!auth),
+      tap(auth => !auth && this.doRedirect())
+    );
   }
   doRedirect() {
     if (this.config && this.config.auth) {
-      this.router.navigateByUrl(
-        this.config.auth.login.path
-      );
+      this.router.navigateByUrl(this.config.auth.login.path);
     }
   }
 }

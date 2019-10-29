@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ui-user-menu',
@@ -7,13 +7,11 @@ import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 })
 export class UserMenuComponent implements OnInit {
   isOpen: boolean;
+  @Output() logout = new EventEmitter();
 
-  constructor(
-    private elementRef: ElementRef
-  ) { }
+  constructor(private elementRef: ElementRef) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   toggleDropdown() {
     this.isOpen = !this.isOpen;
   }
@@ -30,5 +28,9 @@ export class UserMenuComponent implements OnInit {
     if (!clickedInside) {
       this.closeDropdown();
     }
+  }
+
+  onLogout() {
+    this.logout.emit();
   }
 }

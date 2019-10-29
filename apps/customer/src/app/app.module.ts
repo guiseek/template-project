@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreSharedSecurityModule, AuthGuard, HttpTokenInterceptor } from '@guiseek/core/shared/security';
+import {
+  CoreSharedSecurityModule,
+  AuthGuard,
+  HttpTokenInterceptor
+} from '@guiseek/core/shared/security';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
@@ -15,7 +19,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
       api: { prefix: '/api', login: '/auth/login', me: '/auth/me' },
       auth: {
         login: { path: '/auth/login', redirectTo: '/' },
-        signup: { path: '/auth/signup', redirectTo: '/' },
+        signup: { path: '/auth/signup', redirectTo: '/auth/login' },
         logout: { redirectTo: '/auth/login' }
       }
     }),
@@ -35,7 +39,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
             import('@guiseek/customer/lazy/account').then(
               module => module.CustomerLazyAccountModule
             )
-        },
+        }
         // { path: '', redirectTo: 'account', pathMatch: 'full' },
       ],
       { initialNavigation: 'enabled' }

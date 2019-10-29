@@ -1,6 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { AuthenticationService, SECURITY_CONFIG, CoreSecurityConfig } from '@guiseek/core/shared/security';
+import {
+  AuthenticationService,
+  SECURITY_CONFIG,
+  CoreSecurityConfig
+} from '@guiseek/core/shared/security';
 import { MatDialog } from '@angular/material';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
@@ -28,37 +32,30 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   login() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      return this.authSerivce.login(
-        this.form.value
-      );
+      return this.authSerivce.login(this.form.value);
     }
-
   }
   forgotPassword() {
-    const ref = this.dialogService.open(
-      ForgotPasswordComponent, {
+    const ref = this.dialogService.open(ForgotPasswordComponent, {
       // header: { title: 'Recuperar conta' },
       // withShell: true
-    })
+    });
     const sub = ref.afterClosed().subscribe(result => {
       if (result) {
-        this.openAlert()
+        this.openAlert();
       }
-      sub.unsubscribe()
-    })
+      sub.unsubscribe();
+    });
   }
   openAlert() {
     // const ref = this.dialogService.openAlert({
     //   type: 'info',
     //   message: 'Acesse seu email, copie o código enviado e volte para configurar sua nova senha, ok?'
     // })
-
     // const sub = ref.afterClosed()
     //   .subscribe((result) => {
     //     sub.unsubscribe()
@@ -68,17 +65,16 @@ export class LoginComponent implements OnInit {
     //   })
   }
   openResetPassword() {
-    const ref = this.dialogService.open(
-      ChangePasswordComponent, {
+    const ref = this.dialogService.open(ChangePasswordComponent, {
       // withShell: true,
       // header: {
       //   title: 'Nova senha',
       //   subtitle: 'Use o código recebido no email'
       // }
-    })
+    });
     const sub = ref.afterClosed().subscribe(result => {
-      console.log('result: ', result)
-      sub.unsubscribe()
-    })
+      console.log('result: ', result);
+      sub.unsubscribe();
+    });
   }
 }

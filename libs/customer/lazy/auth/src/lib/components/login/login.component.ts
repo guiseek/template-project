@@ -1,21 +1,13 @@
-import {
-  Component,
-  ViewEncapsulation,
-  ChangeDetectionStrategy,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '@guiseek/core/shared/security';
 
 @Component({
   selector: 'auth-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./login.component.scss']
 })
 export class CustomerLoginComponent implements OnInit {
-  constructor(
-    private authService: AuthenticationService
-  ) {
+  constructor(private authService: AuthenticationService) {
     // super(authService);
 
     this.authService.user$.subscribe(data => {
@@ -23,9 +15,7 @@ export class CustomerLoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
   onLogin() {
     // this.
     // this.form.markAllAsTouched();

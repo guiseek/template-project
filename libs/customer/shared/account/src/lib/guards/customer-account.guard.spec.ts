@@ -9,7 +9,10 @@ describe('CustomerAccountGuard', () => {
     });
   });
 
-  it('should ...', inject([CustomerAccountGuard], (guard: CustomerAccountGuard) => {
-    expect(guard).toBeTruthy();
-  }));
+  it('should ...', inject(
+    [CustomerAccountGuard],
+    (guard: CustomerAccountGuard) => {
+      expect(guard).toBeTruthy();
+    }
+  ));
 });

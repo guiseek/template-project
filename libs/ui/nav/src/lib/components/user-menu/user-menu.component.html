@@ -22,24 +22,24 @@
     <div class="content">
       <mat-nav-list>
         <mat-list-item>
-          <a matLine [routerLink]="['/dashboard/profile']">Profile</a>
+          <a matLine [routerLink]="['/']">Conta</a>
           <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
         </mat-list-item>
         <mat-list-item>
-          <a matLine [routerLink]="['/dashboard/settings']">Settings</a>
+          <a matLine [routerLink]="['/']">Configurações</a>
           <button mat-icon-button><mat-icon>settings</mat-icon></button>
         </mat-list-item>
         <mat-list-item>
-          <a matLine [routerLink]="['/home/faq']">Help</a>
+          <a matLine [routerLink]="['/']">Ajuda</a>
           <button mat-icon-button><mat-icon>help</mat-icon></button>
         </mat-list-item>
 
         <mat-divider></mat-divider>
 
-        <!-- <mat-list-item (click)="logout()">
-          <a matLine>Logout</a>
+        <mat-list-item (click)="onLogout()">
+          <a matLine>Sair</a>
           <button mat-icon-button><mat-icon>exit_to_app</mat-icon></button>
-        </mat-list-item> -->
+        </mat-list-item>
       </mat-nav-list>
     </div>
   </div>
