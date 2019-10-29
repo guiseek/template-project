@@ -38,6 +38,7 @@ export class TokenInterceptor implements HttpInterceptor {
     );
   }
   catchRedirectError(err: any): void {
+    console.log('err: ', err)
     if (err instanceof HttpErrorResponse) {
       if (err.status === 401) {
         this._tokenService.clearToken();

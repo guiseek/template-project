@@ -21,13 +21,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    CoreSharedAuthModule.forRoot({
-      endpoint: '/api/auth',
-      redirect: {
-        success: '/account',
-        failure: '/auth'
-      }
-    }),
+    // CoreSharedAuthModule.forRoot({
+    //   endpoint: '/api/auth',
+    //   redirect: {
+    //     success: '/account',
+    //     failure: '/auth'
+    //   }
+    // }),
     RouterModule.forChild([
       {
         path: '',
@@ -46,7 +46,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       }
     ])
   ],
-  providers: [CoreAuthService],
+  // providers: [CoreAuthService],
   declarations: [LoginComponent, AuthLoginComponent, SignupComponent]
 })
 export class CustomerLazyAuthModule { }

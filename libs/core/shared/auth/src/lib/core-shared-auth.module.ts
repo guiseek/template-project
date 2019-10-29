@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders, APP_INITIALIZER } from '@angular/core';
+import { NgModule, ModuleWithProviders, APP_INITIALIZER, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +24,7 @@ import {
   tokenServiceInitializeApp
 } from './services/core-token.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { CoreAuthGuard } from './guards/core-auth.guard';
 
 @NgModule({
   imports: [
@@ -34,10 +35,21 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     UiSharedModule,
     RouterModule
   ],
+  providers: [
+    CoreAuthService,
+    CoreAuthGuard
+  ],
   declarations: [LoginBaseComponent, ProfileComponent, ChangePasswordComponent],
   exports: [LoginBaseComponent, ProfileComponent, ChangePasswordComponent]
 })
 export class CoreSharedAuthModule {
+  // constructor(@Optional() @SkipSelf() parentModule: CoreSharedAuthModule) {
+  //   if (parentModule) {
+  //     throw new Error(
+  //       'CoreSharedAuthModule is already loaded. Import it in the AppModule only'
+  //     );
+  //   }
+  // }
   static forRoot({
     jwtConfig,
     ...config
@@ -54,10 +66,11 @@ export class CoreSharedAuthModule {
           provide: CORE_JWT_CONFIG_TOKEN,
           useValue: { ...CORE_JWT_CONFIG, ...jwtConfig }
         },
-        CoreAuthService,
         ...CoreWebProviders,
         CoreTokenService,
         TokenInterceptor,
+        CoreAuthService,
+        CoreAuthGuard,
         {
           provide: APP_INITIALIZER,
           useFactory: tokenServiceInitializeApp,
@@ -74,8 +87,9 @@ export class CoreSharedAuthModule {
           useFactory: authServiceInitializeApp,
           multi: true,
           deps: [CoreAuthService]
-        }
+        },
       ]
     };
   }
+
 }

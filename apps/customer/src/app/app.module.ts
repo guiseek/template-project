@@ -3,37 +3,47 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreSharedSecurityModule, AuthGuard, HttpTokenInterceptor } from '@guiseek/core/shared/security';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-
+    HttpClientModule,
+    CoreSharedSecurityModule.forRoot({
+      api: { prefix: '/api', login: '/auth/login', me: '/auth/me' },
+      auth: {
+        login: { path: '/auth', redirectTo: '/' },
+        signup: { path: '/auth/signup', redirectTo: '/' }
+      }
+    }),
     RouterModule.forRoot(
       [
-        // { path: '', redirectTo: 'account', pathMatch: 'full' },
         {
           path: 'auth',
-          // canActivate: [AuthCustomerGuard],
           loadChildren: () =>
             import('@guiseek/customer/lazy/auth').then(
               m => m.CustomerLazyAuthModule
             )
         },
         {
-          path: 'account',
+          path: '',
+          canActivate: [AuthGuard],
           loadChildren: () =>
             import('@guiseek/customer/lazy/account').then(
               module => module.CustomerLazyAccountModule
             )
         },
-        { path: '', redirectTo: 'account', pathMatch: 'full' },
+        // { path: '', redirectTo: 'account', pathMatch: 'full' },
       ],
       { initialNavigation: 'enabled' }
     ),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
