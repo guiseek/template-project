@@ -54,7 +54,7 @@ export class SidenavToggleDirective implements OnInit, OnDestroy {
   constructor(
     private service: NavService,
     private mediaObserver: MediaObserver
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.mediaSubscription = this.mediaObserver

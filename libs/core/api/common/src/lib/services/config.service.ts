@@ -68,6 +68,7 @@ export class ConfigService {
       username: this.get('MYSQL_USERNAME'),
       password: this.get('MYSQL_PASSWORD'),
       database: this.get('MYSQL_DATABASE'),
+      // synchronize: true,
       // migrationsRun: true,
       logging: this.nodeEnv === 'development'
       // namingStrategy: new SnakeNamingStrategy(),

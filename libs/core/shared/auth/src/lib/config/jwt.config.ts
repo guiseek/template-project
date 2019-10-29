@@ -3,7 +3,7 @@ import { JwtConfig } from '../interfaces/jwt-config.interface';
 export const CORE_JWT_CONFIG: JwtConfig = {
   withoutTokenUrls: ['auth/'],
   headerName: 'Authorization',
-  headerPrefix: 'JWT',
+  headerPrefix: 'Bearer',
   tokenName: 'token',
   storageKeyName: 'token'
 };

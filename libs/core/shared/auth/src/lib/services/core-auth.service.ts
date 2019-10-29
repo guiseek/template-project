@@ -13,7 +13,7 @@ export function authServiceInitializeApp(authService: CoreAuthService) {
 }
 @Injectable()
 export class CoreAuthService {
-  config: CoreAuthConfig
+  config: CoreAuthConfig;
   api: string;
 
   $current = new BehaviorSubject<UserAccount>(undefined);
@@ -29,13 +29,12 @@ export class CoreAuthService {
     private http: HttpClient,
     private router: Router
   ) {
-    this._tokenService.getToken().then((token) => {
-      console.log('_config: ', token)
-    })
+    this._tokenService.getToken().then(token => {
+      console.log('_config: ', token);
+    });
 
-
-    this.api = _config.endpoint
-    this.config = _config
+    this.api = _config.endpoint;
+    this.config = _config;
     // CoreAuthService._config = _config
   }
   async initCurrent() {
@@ -55,48 +54,36 @@ export class CoreAuthService {
   setCurrent(value: UserAccount) {
     if (!value) {
       this.current = undefined;
-    //   this.clearPermissions().then(_ => (this.current = undefined));
-    // } else {
-    //   if (value.permissionNames.length) {
-    //     this.loadPermissions(value).then(_ => (this.current = value));
-    //   } else {
-    //     this.clearPermissions().then(_ => (this.current = undefined));
-    //   }
+      //   this.clearPermissions().then(_ => (this.current = undefined));
+      // } else {
+      //   if (value.permissionNames.length) {
+      //     this.loadPermissions(value).then(_ => (this.current = value));
+      //   } else {
+      //     this.clearPermissions().then(_ => (this.current = undefined));
+      //   }
     } else {
       this.$current.next(value);
     }
   }
   login(credentials: Credentials) {
     return this.http
-      .post<JwtPayload>(
-        `${this.config.endpoint}/login`,
-        credentials
+      .post<JwtPayload>(`${this.config.endpoint}/login`, credentials)
+      .pipe(
+        tap(({ token, user }: JwtPayload) => {
+          if (token && token.accessToken) {
+            this._tokenService.setCurrent(token.accessToken);
+          }
+          this.authSubject$.next(user);
+        })
       )
-      .pipe(tap(({ token, user }: JwtPayload) => {
-        console.log(token)
-        if (token && token.accessToken) {
-          console.log(token && token.accessToken)
-          console.log(token.accessToken)
-          this._tokenService.setCurrent(token.accessToken);
-        }
-        this.authSubject$.next(user);
-      })).subscribe(
+      .subscribe(
         () => this.router.navigate([this.config.redirect.success]),
         () => this.router.navigate([this.config.redirect.failure])
-      )
+      );
   }
   me() {
-    return this.http.get<UserAccount>(
-      `${this.config.endpoint}/me`
-    ).pipe(tap((me) => this.authSubject$.next(me)))
-  }
-  getUsers() {
-    return [{
-      email: 'silvio@gmail.com',
-      password: 'silvio'
-    }, {
-      email: 'guiseek@gmail.com',
-      password: 'guiseek'
-    }]
+    return this.http
+      .get<UserAccount>(`${this.config.endpoint}/me`)
+      .pipe(tap(me => this.authSubject$.next(me)));
   }
 }

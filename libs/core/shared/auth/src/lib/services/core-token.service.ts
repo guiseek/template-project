@@ -2,9 +2,12 @@ import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
 import { decode } from 'jsonwebtoken';
 import { CORE_JWT_CONFIG_TOKEN } from '../config/jwt.config';
-import { BROWSER_STORAGE_CONFIG_TOKEN, BrowserStorageService } from '@guiseek/core/shared/web';
+import {
+  BROWSER_STORAGE_CONFIG_TOKEN,
+  BrowserStorageService
+} from '@guiseek/core/shared/web';
 import { JwtConfig } from '../interfaces';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 export function tokenServiceInitializeApp(tokenService: CoreTokenService) {
   return () => tokenService.initializeApp();
@@ -14,6 +17,7 @@ export function tokenServiceInitializeApp(tokenService: CoreTokenService) {
 })
 export class CoreTokenService {
   current: string = undefined;
+  $current = new BehaviorSubject<string>(undefined);
   current$: Observable<string>;
 
   tokenHasExpired: boolean | undefined = undefined;
@@ -23,15 +27,15 @@ export class CoreTokenService {
 
   constructor(
     @Inject(CORE_JWT_CONFIG_TOKEN) private _jwtConfig: JwtConfig,
-    @Inject(BROWSER_STORAGE_CONFIG_TOKEN) private _storage: BrowserStorageService,
+    @Inject(BROWSER_STORAGE_CONFIG_TOKEN)
+    private _storage: BrowserStorageService,
     @Inject(PLATFORM_ID) private _platformId: Object
   ) {
-    console.log('jwt: ', _jwtConfig);
-    console.log('storage: ', _storage);
-    console.log('jwt: ', _platformId);
+    this._storage
+      .getItem(this._jwtConfig.storageKeyName)
+      .then(token => (this.current = token));
   }
   initCurrent() {
-    console.log('token: ', )
     return new Promise((resolve, reject) => {
       this._storage
         .getItem(this._jwtConfig.storageKeyName)
@@ -76,7 +80,7 @@ export class CoreTokenService {
             clearInterval(this._checkTokenHasExpiredIntervalRef);
             this.tokenHasExpired = true;
           }, (tokenPayload.exp - tokenPayload.iat) * 1000);
-        } catch (error) { }
+        } catch (error) {}
       } else {
         if (this._checkTokenHasExpiredIntervalRef) {
           clearInterval(this._checkTokenHasExpiredIntervalRef);
@@ -88,13 +92,16 @@ export class CoreTokenService {
     return decode(token, { complete: true }) as any;
   }
   getToken() {
-    return this._storage.getItem(this._jwtConfig.tokenName)
+    return this._storage.getItem(this._jwtConfig.tokenName);
+  }
+  clearToken() {
+    this._storage.removeItem(this._jwtConfig.tokenName);
   }
   getHeader() {
     const headers = {};
     headers[this._jwtConfig.headerName] =
       this._jwtConfig.headerPrefix + ' ' + this.getCurrent();
-    console.log('headers: ', headers)
+    console.log('headers: ', headers);
     return headers;
   }
 }

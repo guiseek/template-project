@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, Input, HostBinding } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  Input,
+  HostBinding
+} from '@angular/core';
 import { NavItem } from '../../interfaces/nav-config.interfaces';
 import { NavService } from '../../services/nav.service';
 
@@ -19,9 +25,9 @@ export class SidenavItemComponent implements OnInit {
   @HostBinding('class.sidenav-item')
   sidenavItemClass = true;
 
-  constructor(private service: NavService) { }
+  constructor(private service: NavService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   toggleDropdown(): void {
     if (this.item.children && this.item.children.length > 0) {

@@ -41,7 +41,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatProgressBarModule
   ]
 })
-export class UiSharedModule { }
+export class UiSharedModule {}
 
 // import { NgModule } from '@angular/core';
 // import { CommonModule } from '@angular/common';

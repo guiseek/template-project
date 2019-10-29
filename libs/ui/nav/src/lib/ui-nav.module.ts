@@ -32,19 +32,29 @@ const matModules = [
 
 @NgModule({
   imports: [CommonModule, ...matModules, FlexLayoutModule, RouterModule],
-  declarations: [ToolbarComponent, SidenavComponent, SidenavItemComponent, SearchComponent, SearchBoxComponent, SidenavToggleDirective],
-  exports: [ToolbarComponent, SidenavComponent, SidenavItemComponent, SearchComponent, SearchBoxComponent, SidenavToggleDirective],
+  declarations: [
+    ToolbarComponent,
+    SidenavComponent,
+    SidenavItemComponent,
+    SearchComponent,
+    SearchBoxComponent,
+    SidenavToggleDirective
+  ],
+  exports: [
+    ToolbarComponent,
+    SidenavComponent,
+    SidenavItemComponent,
+    SearchComponent,
+    SearchBoxComponent,
+    SidenavToggleDirective
+  ],
   providers: [{ provide: WindowToken, useFactory: windowProvider }]
 })
 export class UiNavModule {
   static forRoot(items: NavItem[]): ModuleWithProviders {
     return {
       ngModule: UiNavModule,
-      providers: [
-        NavService,
-        { provide: NAV_ITEMS, useValue: items }
-      ]
+      providers: [NavService, { provide: NAV_ITEMS, useValue: items }]
     };
   }
 }
-

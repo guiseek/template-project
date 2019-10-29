@@ -3,26 +3,45 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginBaseComponent } from './components/login/login.component';
-import { CORE_AUTH_CONFIG_TOKEN, CORE_AUTH_CONFIG } from './config/core-auth.config';
+import {
+  CORE_AUTH_CONFIG_TOKEN,
+  CORE_AUTH_CONFIG
+} from './config/core-auth.config';
 import { CORE_JWT_CONFIG_TOKEN, CORE_JWT_CONFIG } from './config/jwt.config';
 import { CoreAuthConfig } from './interfaces/core-auth-config.interface';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UiSharedModule } from '@guiseek/ui/shared';
-import { CoreAuthService, authServiceInitializeApp } from './services/core-auth.service';
+import {
+  CoreAuthService,
+  authServiceInitializeApp
+} from './services/core-auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreWebProviders } from '@guiseek/core/shared/web';
-import { CoreTokenService, tokenServiceInitializeApp } from './services/core-token.service';
+import {
+  CoreTokenService,
+  tokenServiceInitializeApp
+} from './services/core-token.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
-  imports: [CommonModule, FlexLayoutModule, HttpClientModule, ReactiveFormsModule, UiSharedModule, RouterModule],
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    UiSharedModule,
+    RouterModule
+  ],
   declarations: [LoginBaseComponent, ProfileComponent, ChangePasswordComponent],
   exports: [LoginBaseComponent, ProfileComponent, ChangePasswordComponent]
 })
 export class CoreSharedAuthModule {
-  static forRoot({ jwtConfig, ...config }: CoreAuthConfig): ModuleWithProviders {
+  static forRoot({
+    jwtConfig,
+    ...config
+  }: CoreAuthConfig): ModuleWithProviders {
     return {
       ngModule: CoreSharedAuthModule,
       providers: [
@@ -57,6 +76,6 @@ export class CoreSharedAuthModule {
           deps: [CoreAuthService]
         }
       ]
-    }
+    };
   }
 }

@@ -14,9 +14,7 @@ export class NavService {
    */
   private treePrivate: Tree<NavItem>;
 
-  private itemsPrivate = new BehaviorSubject<NavItem[]>([
-    { name: 'dummy' }
-  ]);
+  private itemsPrivate = new BehaviorSubject<NavItem[]>([{ name: 'dummy' }]);
 
   items$ = this.itemsPrivate.asObservable();
 

@@ -12,17 +12,17 @@ export class UtilsService {
   public static toDto<T, E>(
     model: new (entity: E, options?: any) => T,
     entity: E,
-    options?: any,
+    options?: any
   ): T;
   public static toDto<T, E>(
     model: new (entity: E, options?: any) => T,
     entity: E[],
-    options?: any,
+    options?: any
   ): T[];
   public static toDto<T, E>(
     model: new (entity: E, options?: any) => T,
     entity: E | E[],
-    options?: any,
+    options?: any
   ): T | T[] {
     if (_.isArray(entity)) {
       return entity.map(u => new model(u, options));
@@ -63,7 +63,7 @@ export class UtilsService {
   // FIXME: remove after typescript 3.7 update
   static get<B, C = undefined>(
     func: () => B,
-    defaultValue?: C,
+    defaultValue?: C
   ): B | C | undefined {
     try {
       const value = func();

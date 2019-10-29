@@ -5,13 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { UiSharedModule } from '@guiseek/ui/shared';
-import { CoreSharedAuthModule, TokenInterceptor } from '@guiseek/core/shared/auth';
+import {
+  CoreSharedAuthModule,
+  TokenInterceptor
+} from '@guiseek/core/shared/auth';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-const routes: Routes = [
-  { path: '', component: AccountComponent }
-];
+const routes: Routes = [{ path: '', component: AccountComponent }];
 
 @NgModule({
   declarations: [AccountComponent],
@@ -31,4 +32,4 @@ const routes: Routes = [
     }
   ]
 })
-export class AccountModule { }
+export class AccountModule {}

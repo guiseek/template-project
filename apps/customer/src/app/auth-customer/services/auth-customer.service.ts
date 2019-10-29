@@ -6,12 +6,9 @@ import { UserAccount } from '@guiseek/core/shared/auth';
   providedIn: 'root'
 })
 export class AuthCustomerService {
-
-  constructor(
-    private _http: HttpClient
-  ) { }
+  constructor(private _http: HttpClient) {}
 
   get me$() {
-    return this._http.get<UserAccount>('/api/auth/me')
+    return this._http.get<UserAccount>('/api/auth/me');
   }
 }

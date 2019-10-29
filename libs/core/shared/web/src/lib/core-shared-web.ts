@@ -10,4 +10,4 @@ export * from './config/browser-storage.config';
 export const CoreWebProviders: Provider[] = [
   CookieService,
   { provide: BROWSER_STORAGE_CONFIG_TOKEN, useClass: BrowserStorageService }
-]
+];

@@ -3,7 +3,7 @@ import {
   Catch,
   ArgumentsHost,
   BadRequestException,
-  HttpStatus,
+  HttpStatus
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { ValidationError } from 'class-validator';
@@ -12,7 +12,7 @@ import * as _ from 'lodash';
 
 @Catch(BadRequestException)
 export class HttpExceptionFilter implements ExceptionFilter {
-  constructor(public reflector: Reflector) { }
+  constructor(public reflector: Reflector) {}
 
   catch(exception: BadRequestException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
@@ -34,7 +34,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
   private _validationFilter(validationErrors: ValidationError[]) {
     for (const validationError of validationErrors) {
       for (const [constraintKey, constraint] of Object.entries(
-        validationError.constraints,
+        validationError.constraints
       )) {
         // convert default messages
         if (!constraint) {

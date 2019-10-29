@@ -13,7 +13,7 @@ export class CookieService {
     // @Inject(DOCUMENT) private document: any,
     @Inject(DOCUMENT) private document: Document,
     // Get the `PLATFORM_ID` so we can check if we're in a browser.
-    @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>,
+    @Inject(PLATFORM_ID) private platformId: InjectionToken<Object>
   ) {
     this.documentIsAccessible = isPlatformBrowser(this.platformId);
   }
@@ -70,7 +70,9 @@ export class CookieService {
         const currentCookie: Array<string> = split[i].split('=');
 
         currentCookie[0] = currentCookie[0].replace(/^ /, '');
-        cookies[decodeURIComponent(currentCookie[0])] = decodeURIComponent(currentCookie[1]);
+        cookies[decodeURIComponent(currentCookie[0])] = decodeURIComponent(
+          currentCookie[1]
+        );
       }
     }
 
@@ -99,11 +101,14 @@ export class CookieService {
       return;
     }
 
-    let cookieString: string = encodeURIComponent(name) + '=' + encodeURIComponent(value) + ';';
+    let cookieString: string =
+      encodeURIComponent(name) + '=' + encodeURIComponent(value) + ';';
 
     if (expires) {
       if (typeof expires === 'number') {
-        const dateExpires: Date = new Date(new Date().getTime() + expires * 1000 * 60 * 60 * 24);
+        const dateExpires: Date = new Date(
+          new Date().getTime() + expires * 1000 * 60 * 60 * 24
+        );
 
         cookieString += 'expires=' + dateExpires.toUTCString() + ';';
       } else {
@@ -166,8 +171,14 @@ export class CookieService {
    * @returns {RegExp}
    */
   private getCookieRegExp(name: string): RegExp {
-    const escapedName: string = name.replace(/([\[\]\{\}\(\)\|\=\;\+\?\,\.\*\^\$])/ig, '\\$1');
+    const escapedName: string = name.replace(
+      /([\[\]\{\}\(\)\|\=\;\+\?\,\.\*\^\$])/gi,
+      '\\$1'
+    );
 
-    return new RegExp('(?:^' + escapedName + '|;\\s*' + escapedName + ')=(.*?)(?:;|$)', 'g');
+    return new RegExp(
+      '(?:^' + escapedName + '|;\\s*' + escapedName + ')=(.*?)(?:;|$)',
+      'g'
+    );
   }
 }

@@ -7,10 +7,7 @@ import { CoreSharedAuthModule } from '@guiseek/core/shared/auth';
 const routes: Routes = [{ path: '', component: AccountComponent }];
 
 @NgModule({
-  imports: [
-    CoreSharedAuthModule.forRoot({}),
-    RouterModule.forChild(routes)
-  ],
+  imports: [CoreSharedAuthModule.forRoot({}), RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AccountRoutingModule { }
+export class AccountRoutingModule {}

@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  OnDestroy,
+  ChangeDetectorRef,
+  Inject
+} from '@angular/core';
 import { NavItem } from '../../interfaces/nav-config.interfaces';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
@@ -21,7 +28,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private cd: ChangeDetectorRef,
     @Inject(WindowToken) private window: Window
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.sub = this.service.items$.subscribe((items: NavItem[]) => {

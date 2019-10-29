@@ -1,11 +1,21 @@
 import { JwtService } from '@nestjs/jwt';
-import { Injectable, NotFoundException, Inject, forwardRef, ForbiddenException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  Inject,
+  forwardRef,
+  ForbiddenException
+} from '@nestjs/common';
 import { UserAccountDto } from '../dtos/user-account.dto';
 import { UserAccount } from '../entities/user-account.entity';
 import { TokenPayloadDto } from '../dtos/token.payload.dto';
 import { UserAccountService } from './user-account.service';
 import { UserLoginDto } from '../dtos/user-login.dto';
-import { ContextService, ConfigService, UtilsService } from '@guiseek/core/api/common';
+import {
+  ContextService,
+  ConfigService,
+  UtilsService
+} from '@guiseek/core/api/common';
 
 @Injectable()
 export class AuthService {
@@ -36,13 +46,14 @@ export class AuthService {
     });
   }
 
+  async findUser(dto: UserLoginDto) {
+    return await this.userService.findByUsernameOrEmail(dto);
+  }
   async validateUser(userLoginDto: UserLoginDto): Promise<UserAccount> {
-    const user = await this.userService.findOne({
-      email: userLoginDto.email
-    });
+    const user = await this.userService.findByUsernameOrEmail(userLoginDto);
     const isPasswordValid = await UtilsService.validateHash(
       userLoginDto.password,
-      user && user.password,
+      user && user.password
     );
     if (!user || !isPasswordValid) {
       throw new ForbiddenException('Credenciais inválidas.');

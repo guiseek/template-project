@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
 
 @Component({
   selector: 'ui-search',
@@ -12,9 +19,9 @@ export class SearchComponent implements OnInit {
 
   @ViewChild('input', { read: ElementRef, static: true }) input: ElementRef;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
   open() {
     this.isOpen = true;
 

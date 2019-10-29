@@ -5,7 +5,7 @@ export interface CoreAuthConfig {
   redirect?: {
     success: string;
     failure: string;
-  }
+  };
   title?: string;
-  jwtConfig?: JwtConfig
+  jwtConfig?: JwtConfig;
 }

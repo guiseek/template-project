@@ -9,9 +9,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class ToolbarComponent implements OnInit {
   @Input() sidenav: MatSidenav;
   isFullscreen = false;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

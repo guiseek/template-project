@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, HostListener, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  HostListener,
+  ElementRef
+} from '@angular/core';
 import { NavItem } from '../../interfaces/nav-config.interfaces';
 import { Router, NavigationEnd } from '@angular/router';
 import { NavService } from '../../services/nav.service';
@@ -19,7 +25,7 @@ export class SearchBoxComponent implements OnInit {
     private router: Router,
     private elementRef: ElementRef,
     private service: NavService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.router.events.subscribe(event => {

@@ -10,8 +10,10 @@ import { UiSharedModule } from '@guiseek/ui/shared';
 import { LoginComponent } from './containers/login/login.component';
 import { AuthLoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { CoreSharedAuthModule, CoreAuthService } from '@guiseek/core/shared/auth';
-
+import {
+  CoreSharedAuthModule,
+  CoreAuthService
+} from '@guiseek/core/shared/auth';
 
 @NgModule({
   imports: [
@@ -23,7 +25,7 @@ import { CoreSharedAuthModule, CoreAuthService } from '@guiseek/core/shared/auth
     CoreSharedAuthModule.forRoot({
       endpoint: '/api/auth',
       redirect: {
-        success: '/',
+        success: '/account',
         failure: '/auth'
       }
     }),
@@ -35,19 +37,17 @@ import { CoreSharedAuthModule, CoreAuthService } from '@guiseek/core/shared/auth
         children: [
           {
             path: '',
-            component: AuthLoginComponent,
+            component: AuthLoginComponent
           },
           {
             path: 'signup',
-            component: SignupComponent,
+            component: SignupComponent
           }
         ]
       }
     ])
   ],
-  providers: [
-    CoreAuthService
-  ],
+  providers: [CoreAuthService],
   declarations: [LoginComponent, AuthLoginComponent, SignupComponent]
 })
-export class CustomerLazyAuthModule { }
+export class CustomerLazyAuthModule {}

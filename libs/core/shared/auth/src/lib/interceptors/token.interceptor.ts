@@ -19,34 +19,35 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(
     @Inject(CORE_JWT_CONFIG_TOKEN) private _jwtConfig: JwtConfig,
     private _tokenService: CoreTokenService,
-  ) { }
+    private _router: Router
+  ) {}
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('INTERCEPTOR')
-    console.log(
-      this._tokenService.getCurrent(),
-      this._jwtConfig
-    )
-    console.log('INTERCEPTOR')
-    if (
-      this._tokenService.getCurrent() &&
-      this._jwtConfig &&
-      this._jwtConfig.withoutTokenUrls &&
-      this._jwtConfig.withoutTokenUrls.filter(
-        rule => request.urlWithParams.indexOf(rule) !== -1
-      ).length === 0
-    ) {
+    if (this._tokenService.getCurrent()) {
       request = request.clone({
         setHeaders: this._tokenService.getHeader()
       });
     }
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError(err => {
+        this.catchRedirectError(err);
+        return throwError(err);
+      })
+    );
+  }
+  catchRedirectError(err: any): void {
+    if (err instanceof HttpErrorResponse) {
+      if (err.status === 401) {
+        this._tokenService.clearToken();
+        this._router.navigateByUrl('/');
+      }
+    }
   }
 }
 
-    //     private router: Router
+//     private router: Router
 //   ) { }
 //   intercept(
 //     request: HttpRequest<any>,
@@ -68,13 +69,5 @@ export class TokenInterceptor implements HttpInterceptor {
 //     return request.clone({
 //       setHeaders: this._tokenService.header
 //     });
-//   }
-//   catchRedirectError(err: any): void {
-//     if (err instanceof HttpErrorResponse) {
-//       if (err.status === 401) {
-//         this._tokenService.clear();
-//         this.router.navigateByUrl('/auth');
-//       }
-//     }
 //   }
 // }

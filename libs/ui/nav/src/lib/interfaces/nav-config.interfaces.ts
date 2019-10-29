@@ -1,4 +1,3 @@
-
 export enum NavItemType {
   Link = 'link',
   DropDown = 'dropDown',

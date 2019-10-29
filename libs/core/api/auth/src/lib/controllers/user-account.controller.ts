@@ -1,7 +1,14 @@
 import { UserAccountService } from '../services/user-account.service';
 import { ApiUseTags, ApiOkResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { plainToClass } from 'class-transformer';
-import { Controller, Post, HttpCode, HttpStatus, Body, Get } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  HttpCode,
+  HttpStatus,
+  Body,
+  Get
+} from '@nestjs/common';
 import { LoginPayloadDto } from '../dtos/login-payload.dto';
 import { UserLoginDto } from '../dtos/user-login.dto';
 import { AuthService } from '../services/auth.service';
@@ -15,7 +22,7 @@ export class UserAccountController {
   constructor(
     public readonly userService: UserAccountService,
     public readonly authService: AuthService
-  ) { }
+  ) {}
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
@@ -27,7 +34,7 @@ export class UserAccountController {
     @Body() userLoginDto: UserLoginDto
   ): Promise<LoginPayloadDto> {
     const userEntity = await this.authService.validateUser(userLoginDto);
-    console.log(userEntity)
+    console.log(userEntity);
     const token = await this.authService.createToken(userEntity);
     const userAccount = new UserAccountDto(userEntity);
     const dto = new LoginPayloadDto(userAccount, token);
@@ -36,21 +43,25 @@ export class UserAccountController {
   }
   @Post('register')
   @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({ type: UserAccountDto, description: 'Successfully Registered' })
+  @ApiOkResponse({
+    type: UserAccountDto,
+    description: 'Successfully Registered'
+  })
   // @ApiImplicitFile({ name: 'avatar', required: true })
   // @UseInterceptors(FileInterceptor('avatar'))
   async userRegister(
-    @Body() userRegisterDto: UserRegisterDto,
+    @Body() userRegisterDto: UserRegisterDto
     // @UploadedFile() file: IFile,
   ): Promise<UserAccountDto> {
     const createdUser = await this.userService.createUser(
-      userRegisterDto,
+      userRegisterDto
       // file,
     );
-    console.log(createdUser)
-    return plainToClass(UserAccountDto,
+    console.log(createdUser);
+    return plainToClass(
+      UserAccountDto,
       new UserAccountDto(Object.assign({ role: RoleType.User }, createdUser))
-    )
+    );
     // return createdUser.toDto();
   }
 

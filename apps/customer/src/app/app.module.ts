@@ -52,18 +52,22 @@ import { AuthCustomerGuard } from './auth-customer/services/auth-customer.guard'
         ]
       }
     ]),
-    RouterModule.forRoot([
-      { path: '', redirectTo: 'account', pathMatch: 'full' },
-      {
-        path: 'account',
-        // canActivate: [AuthCustomerGuard],
-        loadChildren: () => import('./account/account.module').then(m => m.AccountModule)
-      }
-    ], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(
+      [
+        // { path: '', redirectTo: 'account', pathMatch: 'full' },
+        {
+          path: 'account',
+          // canActivate: [AuthCustomerGuard],
+          loadChildren: () =>
+            import('./account/account.module').then(m => m.AccountModule)
+        }
+      ],
+      { initialNavigation: 'enabled' }
+    ),
     AuthCustomerModule,
     BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

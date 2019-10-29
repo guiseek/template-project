@@ -7,7 +7,7 @@ export class BrowserStorageService implements BrowserStorage {
   [index: number]: string;
   [key: string]: any;
   length: number;
-  constructor(private _cookieService: CookieService) { }
+  constructor(private _cookieService: CookieService) {}
   public clear(): Promise<any> {
     return new Promise(resolve => {
       this._cookieService.deleteAll();

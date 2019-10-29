@@ -41,4 +41,4 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatProgressBarModule
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {}

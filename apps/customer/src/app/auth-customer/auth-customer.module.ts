@@ -6,7 +6,6 @@ import { CoreSharedAuthModule } from '@guiseek/core/shared/auth';
 import { AuthCustomerService } from './services/auth-customer.service';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -15,8 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AuthCustomerRoutingModule
   ],
-  providers: [
-    AuthCustomerService
-  ]
+  providers: [AuthCustomerService]
 })
-export class AuthCustomerModule { }
+export class AuthCustomerModule {}
