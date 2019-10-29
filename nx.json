@@ -52,6 +52,12 @@
     },
     "core-shared-security": {
       "tags": ["feature:shared", "shared"]
+    },
+    "webapp-e2e": {
+      "tags": []
+    },
+    "webapp": {
+      "tags": ["app"]
     }
   }
 }
