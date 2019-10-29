@@ -1,10 +1,9 @@
-import { Global, Module, HttpModule } from "@nestjs/common";
+import { Global, Module, HttpModule } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from './services/config.service';
+import { ContextService } from './services/context.service';
 
-const providers = [
-  ConfigService
-]
+const providers = [ConfigService, ContextService];
 
 @Global()
 @Module({
@@ -14,11 +13,11 @@ const providers = [
     JwtModule.registerAsync({
       imports: [CoreApiCommonModule],
       useFactory: (configService: ConfigService) => ({
-        secretOrPrivateKey: configService.get('JWT_SECRET_KEY')
+        secret: configService.get('JWT_SECRET_KEY')
       }),
       inject: [ConfigService]
     })
   ],
-  exports: [...providers, HttpModule, JwtModule],
+  exports: [...providers, HttpModule, JwtModule]
 })
 export class CoreApiCommonModule {}

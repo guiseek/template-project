@@ -12,19 +12,16 @@
       "tags": []
     },
     "customer": {
-      "tags": []
+      "tags": ["app"]
     },
     "api": {
       "tags": ["feature:api", "shared"]
     },
     "data": {
-      "tags": []
-    },
-    "ui": {
-      "tags": []
+      "tags": ["shared"]
     },
     "customer-api-auth": {
-      "tags": ["feature:api"]
+      "tags": ["feature:api", "shared"]
     },
     "customer-lazy-auth": {
       "tags": ["feature:lazy"]
@@ -37,6 +34,24 @@
     },
     "core-api-common": {
       "tags": ["feature:api", "shared"]
+    },
+    "ui-nav": {
+      "tags": ["feature:shared", "shared"]
+    },
+    "ui-shared": {
+      "tags": ["feature:shared", "shared"]
+    },
+    "core-shared-web": {
+      "tags": ["feature:shared", "shared"]
+    },
+    "customer-lazy-account": {
+      "tags": ["feature:lazy"]
+    },
+    "customer-shared-account": {
+      "tags": ["feature:shared"]
+    },
+    "core-shared-security": {
+      "tags": ["feature:shared", "shared"]
     }
   }
 }

@@ -1,0 +1,24 @@
+<ui-toolbar>
+  <ui-user-menu (logout)="onLogout()">
+    <ui-user-menu-button *ngIf="user$ | async as user">
+      <img src="assets/drum.svg" alt="" />
+      <span>{{ user.email }}</span>
+    </ui-user-menu-button>
+  </ui-user-menu>
+</ui-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav
+    class="sidenav"
+    [opened]="sidenavOpen"
+    role="navigation"
+    [mode]="''"
+    uiSidenavToggle
+    #sidenav
+  >
+    <ui-sidenav></ui-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content class="content-container" fxLayout="column">
+    <p>main works!</p>
+  </mat-sidenav-content>
+</mat-sidenav-container>

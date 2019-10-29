@@ -1,0 +1,117 @@
+@import '~@angular/material/theming';
+
+/**
+ * Toolbar
+ */
+$toolbar-background: white;
+$toolbar-height: 64px;
+$toolbar-z-index: 500;
+
+$spacing: 26px;
+
+$toolbar-button-width: 64px;
+// $toolbar-button-icon-color: $theme-icon;
+$toolbar-elevation: 2;
+$z-index__main-toolbar: 500;
+$height__main-toolbar: 64px;
+$z-index__main-toolbar: 500;
+$height__main-toolbar: 64px;
+
+$mat-toolbar-height-desktop: 64px !default;
+$mat-toolbar-height-mobile-portrait: 56px !default;
+$mat-toolbar-height-mobile-landscape: 48px !default;
+
+// User menu
+
+// Sidenav
+
+// TODO: https://www.joshmorony.com/creating-a-list-gradient-effect-with-sass-in-ionic/
+
+$color__sidenav-list: #a7a9ae;
+
+$background-color__sidenav-toolbar: #272b35;
+
+$background-color__sidenav-list: #2b303b;
+$background-color__sidenav-list__hover: darken(
+  $background-color__sidenav-list,
+  2
+);
+$background-color__sidenav-list__active: $background-color__sidenav-list__hover;
+
+$background-color__sidenav-list__level1: darken(
+  $background-color__sidenav-list,
+  2.5
+);
+$background-color__sidenav-list__level1__hover: darken(
+  $background-color__sidenav-list__level1,
+  1.5
+);
+$background-color__sidenav-list__level1__active: $background-color__sidenav-list__level1__hover;
+
+$background-color__sidenav-list__level2: darken(
+  $background-color__sidenav-list__level1,
+  2.5
+);
+$background-color__sidenav-list__level2__hover: darken(
+  $background-color__sidenav-list__level2,
+  1.5
+);
+$background-color__sidenav-list__level2__active: $background-color__sidenav-list__level2__hover;
+
+$background-color__sidenav-list__level3: darken(
+  $background-color__sidenav-list__level2,
+  2.5
+);
+$background-color__sidenav-list__level3__hover: darken(
+  $background-color__sidenav-list__level3,
+  1.5
+);
+$background-color__sidenav-list__level3__active: $background-color__sidenav-list__level3__hover;
+
+$background-color__sidenav-list__level4: darken(
+  $background-color__sidenav-list__level3,
+  2.5
+);
+$background-color__sidenav-list__level4__hover: darken(
+  $background-color__sidenav-list__level4,
+  1.5
+);
+$background-color__sidenav-list__level4__active: $background-color__sidenav-list__level4__hover;
+
+$background-color__sidenav-list__level5: darken(
+  $background-color__sidenav-list__level4,
+  2.5
+);
+$background-color__sidenav-list__level5__hover: darken(
+  $background-color__sidenav-list__level5,
+  1.5
+);
+$background-color__sidenav-list__level5__active: $background-color__sidenav-list__level5__hover;
+
+$background-color__sidenav-list__level6: darken(
+  $background-color__sidenav-list__level5,
+  2.5
+);
+$background-color__sidenav-list__level6__hover: darken(
+  $background-color__sidenav-list__level6,
+  1.5
+);
+$background-color__sidenav-list__level6__active: $background-color__sidenav-list__level6__hover;
+
+$padding__sidenav-item__level2: 10px;
+$padding__sidenav-item__level3: 20px;
+$padding__sidenav-item__level4: 30px;
+$padding__sidenav-item__level5: 40px;
+$padding__sidenav-item__level6: 40px;
+
+$width__sidenav: 250px;
+
+$padding-left-right__sidenav-list__mat-list-item: 26px;
+$margin-left__sidenav-list__item-name: $padding-left-right__sidenav-list__mat-list-item;
+$width-height__sidenav-list__icon: 18px;
+
+$max-width__icon-sidenav: ($padding-left-right__sidenav-list__mat-list-item * 2) +
+  $width-height__sidenav-list__icon + 2;
+
+$z-index__mat-sidenav: 4;
+$z-index__mat-sidenav-content: 5;

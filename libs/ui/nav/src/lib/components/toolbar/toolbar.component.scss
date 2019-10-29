@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+@import '../../scss/nav_vars';
+// $config: mat-typography-config();
+
+// @import 'fu/var';
+
+:host {
+  z-index: $toolbar-z-index;
+}
+
+//mat-toolbar {
+.toolbar {
+  background: $toolbar-background;
+  padding-right: 0;
+  height: $toolbar-height;
+  padding-left: $spacing/1.5;
+  max-width: 100%;
+
+  @include mat-elevation($toolbar-elevation);
+
+  .button {
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+  }
+
+  // @include media-xs {
+  //   padding-left: $spacing/3;
+  // }
+}

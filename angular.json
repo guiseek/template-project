@@ -23,9 +23,17 @@
             "aot": false,
             "assets": [
               "apps/customer/src/favicon.ico",
-              "apps/customer/src/assets"
+              "apps/customer/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./libs/shared/assets/",
+                "output": "./assets"
+              }
             ],
-            "styles": ["apps/customer/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/customer/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -64,12 +72,26 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "customer:build",
-            "proxyConfig": "apps/customer/proxy.conf.json"
+            "proxyConfig": "apps/customer/proxy.conf.json",
+            "open": true
           },
           "configurations": {
             "production": {
               "browserTarget": "customer:build:production"
             }
+          }
+        },
+        "with-api": {
+          "builder": "@angular-devkit/architect:allOf",
+          "options": {
+            "targets": [
+              {
+                "target": "customer:serve"
+              },
+              {
+                "target": "api:serve"
+              }
+            ]
           }
         },
         "extract-i18n": {
@@ -201,37 +223,6 @@
             "jestConfig": "libs/data/jest.config.js",
             "tsConfig": "libs/data/tsconfig.spec.json"
           }
-        }
-      }
-    },
-    "ui": {
-      "projectType": "library",
-      "root": "libs/ui",
-      "sourceRoot": "libs/ui/src",
-      "prefix": "guiseek",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ui/tsconfig.lib.json",
-              "libs/ui/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/ui/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/ui/jest.config.js",
-            "tsConfig": "libs/ui/tsconfig.spec.json",
-            "setupFile": "libs/ui/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
         }
       }
     },
@@ -371,6 +362,181 @@
           }
         }
       }
+    },
+    "ui-nav": {
+      "projectType": "library",
+      "root": "libs/ui/nav",
+      "sourceRoot": "libs/ui/nav/src",
+      "prefix": "guiseek",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/nav/tsconfig.lib.json",
+              "libs/ui/nav/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/nav/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/nav/jest.config.js",
+            "tsConfig": "libs/ui/nav/tsconfig.spec.json",
+            "setupFile": "libs/ui/nav/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ui-shared": {
+      "projectType": "library",
+      "root": "libs/ui/shared",
+      "sourceRoot": "libs/ui/shared/src",
+      "prefix": "guiseek",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/shared/tsconfig.lib.json",
+              "libs/ui/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/shared/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/shared/jest.config.js",
+            "tsConfig": "libs/ui/shared/tsconfig.spec.json",
+            "setupFile": "libs/ui/shared/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "core-shared-web": {
+      "root": "libs/core/shared/web",
+      "sourceRoot": "libs/core/shared/web/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/shared/web/tsconfig.lib.json",
+              "libs/core/shared/web/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/shared/web/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core/shared/web/jest.config.js",
+            "tsConfig": "libs/core/shared/web/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "customer-lazy-account": {
+      "projectType": "library",
+      "root": "libs/customer/lazy/account",
+      "sourceRoot": "libs/customer/lazy/account/src",
+      "prefix": "customer",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer/lazy/account/tsconfig.lib.json",
+              "libs/customer/lazy/account/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/customer/lazy/account/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer/lazy/account/jest.config.js",
+            "tsConfig": "libs/customer/lazy/account/tsconfig.spec.json",
+            "setupFile": "libs/customer/lazy/account/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "customer-shared-account": {
+      "projectType": "library",
+      "root": "libs/customer/shared/account",
+      "sourceRoot": "libs/customer/shared/account/src",
+      "prefix": "account",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer/shared/account/tsconfig.lib.json",
+              "libs/customer/shared/account/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/customer/shared/account/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer/shared/account/jest.config.js",
+            "tsConfig": "libs/customer/shared/account/tsconfig.spec.json",
+            "setupFile": "libs/customer/shared/account/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "core-shared-security": {
+      "projectType": "library",
+      "root": "libs/core/shared/security",
+      "sourceRoot": "libs/core/shared/security/src",
+      "prefix": "guiseek",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/shared/security/tsconfig.lib.json",
+              "libs/core/shared/security/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/shared/security/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core/shared/security/jest.config.js",
+            "tsConfig": "libs/core/shared/security/tsconfig.spec.json",
+            "setupFile": "libs/core/shared/security/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
