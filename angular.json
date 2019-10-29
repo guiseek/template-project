@@ -440,6 +440,37 @@
           }
         }
       }
+    },
+    "customer-lazy-account": {
+      "projectType": "library",
+      "root": "libs/customer/lazy/account",
+      "sourceRoot": "libs/customer/lazy/account/src",
+      "prefix": "customer",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customer/lazy/account/tsconfig.lib.json",
+              "libs/customer/lazy/account/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/customer/lazy/account/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/customer/lazy/account/jest.config.js",
+            "tsConfig": "libs/customer/lazy/account/tsconfig.spec.json",
+            "setupFile": "libs/customer/lazy/account/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -1,17 +1,1 @@
-<ui-toolbar></ui-toolbar>
-
-<mat-sidenav-container>
-  <mat-sidenav
-    class="sidenav"
-    [opened]="sidenavOpen"
-    role="navigation"
-    [mode]="''"
-    uiSidenavToggle
-    #sidenav
-  >
-    <ui-sidenav></ui-sidenav>
-  </mat-sidenav>
-  <mat-sidenav-content class="content-container" fxLayout="column">
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<router-outlet></router-outlet>
