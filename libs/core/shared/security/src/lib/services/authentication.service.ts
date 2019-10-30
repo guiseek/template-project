@@ -24,16 +24,18 @@ export class AuthenticationService {
   ) {
   }
   login(data) {
+    console.log(this.config.api.prefix + this.config.api.login, data)
     const login$ = this._http
       .post<JwtPayload>(this.config.api.prefix + this.config.api.login, data)
       .pipe(tap(auth => (this.isLoggedIn = !!auth)));
     login$.subscribe(
       auth => this.onLoginSuccess(auth),
-      ({ error }) => this.onLoginFailure(error)
+      ( error ) => this.onLoginFailure(error)
     );
     return login$;
   }
   onLoginSuccess({ token, user }) {
+    console.log(token, user)
     this._tokenService.token = token.accessToken;
     this.router.navigate([
       this.redirectUrl ? this.redirectUrl : this.config.auth.login.redirectTo
@@ -41,7 +43,8 @@ export class AuthenticationService {
     this.$user.next(user);
   }
   onLoginFailure(err) {
-    this.serverMessage = err.message;
+    console.log(err)
+    this.serverMessage = err && err.message;
   }
   signUp(data: UserAccount) {
     return this._http.post<UserAccount>(

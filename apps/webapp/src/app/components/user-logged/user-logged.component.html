@@ -1,0 +1,14 @@
+<ng-container *ngIf="user$ | async as user">
+  <mat-card>
+    <mat-card-header>
+      <div
+        *ngIf="user.photoURL"
+        mat-card-avatar
+        [ngStyle]="{ 'background-image': 'url(' + user.photoURL + ')' }"
+        class="user-logged-header-image"
+      ></div>
+      <mat-card-title>{{ user.displayName }}</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</ng-container>

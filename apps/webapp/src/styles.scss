@@ -14,8 +14,13 @@ body {
 }
 
 .trim-trim {
-	-webkit-animation: shake-horizontal 0.8s both;
-	        animation: shake-horizontal 0.8s both;
+  -webkit-animation: shake-horizontal 0.8s both;
+  animation: shake-horizontal 0.8s both;
+}
+.pwa-fab {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
 }
 
 /* ----------------------------------------------
@@ -34,55 +39,55 @@ body {
   0%,
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
   10%,
   30%,
   50%,
   70% {
     -webkit-transform: translateX(-5px);
-            transform: translateX(-5px);
+    transform: translateX(-5px);
   }
   20%,
   40%,
   60% {
     -webkit-transform: translateX(5px);
-            transform: translateX(5px);
+    transform: translateX(5px);
   }
   80% {
     -webkit-transform: translateX(4px);
-            transform: translateX(4px);
+    transform: translateX(4px);
   }
   90% {
     -webkit-transform: translateX(-4px);
-            transform: translateX(-4px);
+    transform: translateX(-4px);
   }
 }
 @keyframes shake-horizontal {
   0%,
   100% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
   10%,
   30%,
   50%,
   70% {
     -webkit-transform: translateX(-5px);
-            transform: translateX(-5px);
+    transform: translateX(-5px);
   }
   20%,
   40%,
   60% {
     -webkit-transform: translateX(5px);
-            transform: translateX(5px);
+    transform: translateX(5px);
   }
   80% {
     -webkit-transform: translateX(4px);
-            transform: translateX(4px);
+    transform: translateX(4px);
   }
   90% {
     -webkit-transform: translateX(-4px);
-            transform: translateX(-4px);
+    transform: translateX(-4px);
   }
 }

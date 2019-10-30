@@ -19,6 +19,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log('this._tokenService: ', this._tokenService)
     if (this._tokenService.token) {
       request = request.clone({
         setHeaders: this._tokenService.headers
@@ -36,7 +37,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     console.log('err: ', err);
     if (err instanceof HttpErrorResponse) {
       if (err.status === 401) {
-        this._tokenService.reset();
+        // this._tokenService.reset();
         // this._router.navigateByUrl('/');
       }
     }

@@ -50,6 +50,9 @@ export class UserAccountService {
     return this.repository.save(user);
   }
 
+  async find() {
+    return this.repository.find()
+  }
   async findAll(pageOptionsDto) {
     const queryBuilder = this.repository.createQueryBuilder('user');
     return await queryBuilder

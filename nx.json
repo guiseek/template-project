@@ -58,6 +58,9 @@
     },
     "webapp": {
       "tags": ["app"]
+    },
+    "core-shared-fire": {
+      "tags": ["feature:shared", "shared"]
     }
   }
 }

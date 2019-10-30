@@ -52,7 +52,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     RouterModule.forChild([
       {
         path: '',
-        pathMatch: 'full',
+        // pathMatch: 'full',
         // canActivate: [AuthGuard],
         component: MainComponent
       }
