@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'core-auth-profile',
+  exportAs: 'authProfile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })

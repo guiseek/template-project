@@ -21,6 +21,7 @@ import { NAV_ITEMS } from './config/nav.config';
 import { WindowToken, windowProvider } from './utils/window';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { UserMenuButtonComponent } from './components/user-menu/user-menu-button/user-menu-button.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 
 const matModules = [
   MatToolbarModule,
@@ -42,7 +43,8 @@ const matModules = [
     SearchBoxComponent,
     SidenavToggleDirective,
     UserMenuComponent,
-    UserMenuButtonComponent
+    UserMenuButtonComponent,
+    BreadcrumbsComponent
   ],
   exports: [
     ToolbarComponent,
@@ -52,7 +54,8 @@ const matModules = [
     SearchBoxComponent,
     SidenavToggleDirective,
     UserMenuComponent,
-    UserMenuButtonComponent
+    UserMenuButtonComponent,
+    BreadcrumbsComponent
   ],
   providers: [{ provide: WindowToken, useFactory: windowProvider }]
 })

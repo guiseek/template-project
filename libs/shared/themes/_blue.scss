@@ -1,0 +1,51 @@
+@import '~@angular/material/theming';
+
+$custom-blue: (
+  50: #e6edfa,
+  100: #c0d3f2,
+  200: #96b6e9,
+  300: #6b98e0,
+  400: #4c82da,
+  500: #2c6cd3,
+  600: #2764ce,
+  700: #2159c8,
+  800: #1b4fc2,
+  900: #103db7,
+  A100: #e6ecff,
+  A200: #b3c5ff,
+  A400: #809dff,
+  A700: #6789ff,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: white
+  )
+);
+
+@include mat-core();
+
+$blue-primary: mat-palette($custom-blue);
+$blue-accent: mat-palette($mat-blue, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$blue-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$blue-theme: mat-light-theme(
+  $blue-primary,
+  $blue-accent,
+  $blue-warn
+);
+
+@include angular-material-theme($blue-theme);

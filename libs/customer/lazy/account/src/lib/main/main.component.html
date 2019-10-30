@@ -19,6 +19,13 @@
     <ui-sidenav></ui-sidenav>
   </mat-sidenav>
   <mat-sidenav-content class="content-container" fxLayout="column">
-    <p>main works!</p>
+    <mat-toolbar color="primary">
+      <ui-breadcrumbs root="/account" title="Conta"></ui-breadcrumbs>
+    </mat-toolbar>
+    <div class="customer-account-container">
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

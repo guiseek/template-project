@@ -10,6 +10,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { SECURITY_CONFIG } from './config/security-config.token';
 import { TokenService } from './services/token.service';
 import { HttpTokenInterceptor } from './interceptors/http-token.interceptor';
+import { UserAccountResolver } from './resolvers/user-account.resolver';
+import { UserAccountService } from './services/user-account.service';
 
 @NgModule({
   imports: [CommonModule]
@@ -27,7 +29,9 @@ export class CoreSharedSecurityModule {
         { provide: SECURITY_CONFIG, useValue: config },
         AuthenticationService,
         TokenService,
-        HttpTokenInterceptor
+        HttpTokenInterceptor,
+        UserAccountService,
+        UserAccountResolver
       ]
     };
   }

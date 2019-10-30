@@ -7,3 +7,17 @@
 .mat-sidenav-container {
   flex: 1;
 }
+.customer-account-container {
+  padding: 16px;
+  background-color: rgba(#ffaa00, 0.1);
+  background-image: url('libs/shared/assets/scss/patterns/liquid-cheese.svg');
+  background-attachment: fixed;
+  background-size: cover;
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  & > main {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
