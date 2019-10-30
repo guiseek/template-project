@@ -1,11 +1,15 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { environment } from '../environments/environment';
+
+import { CoreSharedFireModule } from '@guiseek/core/shared/fire';
+
 import { UiSharedModule } from '@guiseek/ui/shared';
 import { AppComponent } from './app.component';
 import { RouterModule, Route } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { A11yModule } from '@angular/cdk/a11y';
@@ -53,6 +57,10 @@ const appRoutes: Route[] = [
     A11yModule,
     FlexLayoutModule,
     LayoutModule,
+    CoreSharedFireModule.forRoot({
+      firebase: environment.firebase,
+      collections: ['users']
+    }),
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabled', useHash: true }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MatToolbarModule,

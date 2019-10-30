@@ -558,7 +558,11 @@
             "polyfills": "apps/webapp/src/polyfills.ts",
             "tsConfig": "apps/webapp/tsconfig.app.json",
             "aot": false,
-            "assets": ["apps/webapp/src/favicon.ico", "apps/webapp/src/assets", "apps/webapp/src/manifest.webmanifest"],
+            "assets": [
+              "apps/webapp/src/favicon.ico",
+              "apps/webapp/src/assets",
+              "apps/webapp/src/manifest.webmanifest"
+            ],
             "styles": ["apps/webapp/src/styles.scss"],
             "scripts": []
           },
@@ -657,6 +661,44 @@
             "tsConfig": ["apps/webapp-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/webapp-e2e/**"]
           }
+        }
+      }
+    },
+    "core-shared-fire": {
+      "projectType": "library",
+      "root": "libs/core/shared/fire",
+      "sourceRoot": "libs/core/shared/fire/src",
+      "prefix": "fire",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/core/shared/fire/tsconfig.lib.json",
+            "project": "libs/core/shared/fire/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/shared/fire/tsconfig.lib.json",
+              "libs/core/shared/fire/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/shared/fire/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/core/shared/fire/jest.config.js",
+            "tsConfig": "libs/core/shared/fire/tsconfig.spec.json",
+            "setupFile": "libs/core/shared/fire/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

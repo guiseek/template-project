@@ -9,11 +9,7 @@
   >
     <mat-toolbar>Saiba mais</mat-toolbar>
     <mat-nav-list>
-      <a
-        *ngFor="let page of pages"
-        mat-list-item
-        (click)="goTo(page.path)"
-      >
+      <a *ngFor="let page of pages" mat-list-item (click)="goTo(page.path)">
         {{ page.label }}
       </a>
     </mat-nav-list>
@@ -29,6 +25,9 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <a routerLink="/" mat-icon-button>
+        <mat-icon>home</mat-icon>
+      </a>
       <span class="name">Web App</span>
       <img id="logo" src="/assets/images/rocket.svg" alt="" />
     </mat-toolbar>
@@ -39,4 +38,3 @@
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>
-

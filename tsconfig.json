@@ -33,7 +33,8 @@
       ],
       "@guiseek/core/shared/security": [
         "libs/core/shared/security/src/index.ts"
-      ]
+      ],
+      "@guiseek/core/shared/fire": ["libs/core/shared/fire/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

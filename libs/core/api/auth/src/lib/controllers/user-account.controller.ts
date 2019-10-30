@@ -65,13 +65,13 @@ export class UserAccountController {
     // return createdUser.toDto();
   }
 
-  // @Get('me')
-  // @HttpCode(HttpStatus.OK)
-  // // @UseGuards(AuthGuard)
-  // // @UseInterceptors(AuthUserInterceptor)
-  // @ApiBearerAuth()
-  // @ApiOkResponse({ type: UserAccountDto, description: 'current user info' })
-  // getCurrentUser(@AuthUser() user: UserEntity) {
-  //   return user.toDto();
-  // }
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  // @UseGuards(AuthGuard)
+  // @UseInterceptors(AuthUserInterceptor)
+  @ApiBearerAuth()
+  @ApiOkResponse({ type: UserAccountDto, description: 'current user info' })
+  getCurrentUser() {
+    return this.userService.find()
+  }
 }
