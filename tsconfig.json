@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@env/webapp/*": ["apps/webapp/src/environments/*"],
       "@guiseek/data": ["libs/data/src/index.ts"],
       "@guiseek/customer/api/auth": ["libs/customer/api/auth/src/index.ts"],
       "@guiseek/customer/lazy/auth": ["libs/customer/lazy/auth/src/index.ts"],

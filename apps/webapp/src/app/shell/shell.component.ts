@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material';
+import { FireAuthService } from '@guiseek/core/shared/fire';
+import { User } from 'firebase/app';
 
 
 @Component({
@@ -26,11 +28,13 @@ export class ShellComponent implements OnInit {
     { path: '/contact', label: 'Contato' }
   ]
   @ViewChild('drawer', { static: true }) sidenav: MatSidenav
+  user$: Observable<User>;
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private auth: FireAuthService
   ) {
-
+    this.user$ = this.auth.user$
   }
 
   ngOnInit() {

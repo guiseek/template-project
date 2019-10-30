@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FirestoreService } from '../services/firestore.service';
 
 
 
@@ -7,6 +8,9 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule
+  ],
+  providers: [
+    FirestoreService
   ]
 })
 export class FireStorageModule { }
