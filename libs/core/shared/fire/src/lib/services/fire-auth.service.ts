@@ -4,7 +4,7 @@ import { Credentials } from '@guiseek/core/shared/security';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { auth, User } from 'firebase/app';
-import { tap } from 'rxjs/operators';
+import { tap, filter } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
 
 @Injectable({
@@ -19,16 +19,11 @@ export class FireAuthService {
     private snack: MatSnackBar
   ) {
     this.user$ = this.afAuth.authState
-    .pipe(
-      // switchMap((user) => this.checkUser(user)),
-      tap((user) => {
-        console.log('user 2: ', user)
-        this.saveUser(user)
-      })
-    )
+      .pipe(
+        tap((user) => this.saveUser(user))
+      );
   }
   checkUser(user?) {
-    console.log('user: ', user)
     return !!user ? this.afs.doc(`users/${user.uid}`).valueChanges() : of(null)
   }
   get currentUser() {
@@ -39,13 +34,18 @@ export class FireAuthService {
       const login = await this.afAuth.auth.signInWithEmailAndPassword(
         email, password
       );
+      this.snack.open(
+        `Logado com ${email}`, 'Fechar', {
+        duration: 5000
+      }
+      )
       return login;
     } catch (err) {
       console.log('err: ', err)
       this.snack.open(
-        err && err.message
-      )
-      // throw err;
+        err && err.message, 'Fechar', {
+        duration: 5000
+      });
     }
 
   }
@@ -56,15 +56,20 @@ export class FireAuthService {
   }
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
+      .then((u) => {
+        this.snack.open(
+          `Logado com ${u.user.email} usando ${u.additionalUserInfo.providerId}`, 'Fechar', {
+          duration: 5000
+        })
+      })
   }
   logout() {
     return this.afAuth.auth.signOut();
   }
   saveUser(user: User) {
-    // const { displayName, email, emailVerified, phoneNumber, photoURL, uid, tenantId } = user;
-    // console.table({ displayName, email, emailVerified, phoneNumber, photoURL, uid, tenantId })
-    console.log(user.toJSON())
-    this.afs.collection('users')
-      .doc(user.uid).set(user.toJSON())
+    if (!!user) {
+      this.afs.collection('users')
+        .doc(user.uid).set(user.toJSON())
+    }
   }
 }
