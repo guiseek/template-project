@@ -25,6 +25,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     }),
     RouterModule.forRoot(
       [
+        { path: '', redirectTo: 'account', pathMatch: 'full' },
         {
           path: 'auth',
           loadChildren: () =>
@@ -33,21 +34,21 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
             )
         },
         {
-          path: '',
-          canActivate: [AuthGuard],
+          path: 'account',
+          // canActivate: [AuthGuard],
           loadChildren: () =>
             import('@guiseek/customer/lazy/account').then(
               module => module.CustomerLazyAccountModule
             )
         }
-        // { path: '', redirectTo: 'account', pathMatch: 'full' },
+
       ],
       { initialNavigation: 'enabled' }
     ),
     BrowserAnimationsModule
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

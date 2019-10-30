@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { UiSharedModule } from '@guiseek/ui/shared';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpTokenInterceptor } from '@guiseek/core/shared/security';
+import { HttpTokenInterceptor, AuthGuard } from '@guiseek/core/shared/security';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UiNavModule } from '@guiseek/ui/nav';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';

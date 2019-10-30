@@ -16,7 +16,6 @@ import { HttpTokenInterceptor } from './interceptors/http-token.interceptor';
 })
 export class CoreSharedSecurityModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreSharedSecurityModule) {
-    console.log(parentModule);
     return new Error(
       'CoreSharedSecurityModule só pode ser carregado uma única vez.'
     );

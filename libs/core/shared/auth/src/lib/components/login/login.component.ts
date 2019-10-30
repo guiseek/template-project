@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      return this.authSerivce.login(this.form.value);
+      return this.authSerivce.login(this.form.value)
+        .subscribe(console.table)
     }
   }
   forgotPassword() {

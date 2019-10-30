@@ -19,19 +19,19 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('this._tokenService: ', this._tokenService)
-    if (this._tokenService.token) {
+
+    if (!!this._tokenService.token) {
+      console.log('this._tokenService: ', !!this._tokenService.token, this._tokenService)
       request = request.clone({
         setHeaders: this._tokenService.headers
       });
-
-      return next.handle(request).pipe(
-        catchError(err => {
-          this.catchRedirectError(err);
-          return throwError(err);
-        })
-      );
     }
+    return next.handle(request).pipe(
+      catchError(err => {
+        this.catchRedirectError(err);
+        return throwError(err);
+      })
+    );
   }
   catchRedirectError(err: any): void {
     console.log('err: ', err);
