@@ -47,4 +47,6 @@ Thumbs.db
 apps/webapp/src/environments/environment.prod.ts
 apps/webapp/src/environments/environment.ts
 
+apps/api/src/environments/environment.prod.ts
+apps/api/src/environments/environment.ts
 now.json

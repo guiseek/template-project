@@ -1,0 +1,61 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+.mat-toolbar {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.auth-container {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.mat-card {
+  margin: 12px;
+  padding: 0;
+  overflow: hidden;
+  max-width: 400px;
+}
+.social {
+  margin: 8px;
+  display: flex;
+  justify-content: center;
+  .google-login .mat-icon {
+    padding-right: 8px;
+  }
+}
+// ::ng-deep .mat-fab.google-login .mat-button-wrapper {
+//   position: fixed;
+//   bottom: 16px;
+//   right: 16px;
+//   padding: 8px;
+//   .mat-icon {
+//     width: 100%;
+//     height: 100%;
+//     line-height: 100%;
+//   }
+// }
+
+::ng-deep .mat-fab.pwa-fab .mat-button-wrapper {
+  padding: 4px;
+}
+.pwa-fab {
+  background-color: #fff;
+  &.mat-fab .mat-button-wrapper {
+    padding: 0;
+  }
+
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  .mat-icon {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+  }
+}

@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+  <a type="button" mat-icon-button routerLink="/">
+    <mat-icon>arrow_back</mat-icon>
+  </a>
+  <span>Acesso para usuários</span>
+</mat-toolbar>
+<div class="auth-container">
+  <mat-card>
+    <nav
+      mat-tab-nav-bar
+      mat-stretch-tabs
+      color="primary"
+      backgroundColor="primary"
+    >
+      <a
+        mat-tab-link
+        *ngFor="let link of methods"
+        [routerLink]="link.path"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        {{ link.label }}
+      </a>
+    </nav>
+    <router-outlet></router-outlet>
+  </mat-card>
+  <button mat-fab class="pwa-fab google-login" (click)="onGoogle()">
+    <mat-icon
+      svgIcon="google-logo"
+      aria-hidden="false"
+      aria-label="Example thumbs up SVG icon"
+    ></mat-icon>
+  </button>
+</div>

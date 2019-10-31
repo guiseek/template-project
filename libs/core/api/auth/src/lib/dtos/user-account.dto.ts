@@ -6,7 +6,7 @@ import { AbstractDto } from '@guiseek/core/api/common';
 
 export class UserAccountDto extends AbstractDto {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @ApiModelPropertyOptional()
   firstName?: string;
@@ -31,6 +31,7 @@ export class UserAccountDto extends AbstractDto {
 
   constructor(user: UserAccount) {
     super(user);
+    this.id = user.id;
     this.firstName = user.firstName;
     this.lastName = user.lastName;
     this.role = user && user.role ? user.role : RoleType.User;

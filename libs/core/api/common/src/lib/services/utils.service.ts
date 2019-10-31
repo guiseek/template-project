@@ -1,3 +1,4 @@
+import * as uuid from 'uuid/v1';
 import * as bcrypt from 'bcrypt';
 import * as _ from 'lodash';
 
@@ -75,5 +76,16 @@ export class UtilsService {
     } catch {
       return defaultValue;
     }
+  }
+  public static uuid(): string {
+    return uuid();
+  }
+  public static fileName(ext: string) {
+    return this.uuid() + '.' + ext;
+  }
+  public static isImage(mimeType: string): boolean {
+    const imageMimeTypes = ['image/jpeg', 'image/png'];
+
+    return _.includes(imageMimeTypes, mimeType);
   }
 }

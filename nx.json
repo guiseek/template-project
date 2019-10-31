@@ -52,6 +52,18 @@
     },
     "core-shared-security": {
       "tags": ["feature:shared", "shared"]
+    },
+    "webapp-e2e": {
+      "tags": []
+    },
+    "webapp": {
+      "tags": ["app"]
+    },
+    "core-shared-fire": {
+      "tags": ["feature:shared", "shared"]
+    },
+    "ui-uploader": {
+      "tags": ["feature:shared", "shared"]
     }
   }
 }

@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@env/webapp/*": ["apps/webapp/src/environments/*"],
       "@guiseek/data": ["libs/data/src/index.ts"],
       "@guiseek/customer/api/auth": ["libs/customer/api/auth/src/index.ts"],
       "@guiseek/customer/lazy/auth": ["libs/customer/lazy/auth/src/index.ts"],
@@ -33,7 +34,9 @@
       ],
       "@guiseek/core/shared/security": [
         "libs/core/shared/security/src/index.ts"
-      ]
+      ],
+      "@guiseek/core/shared/fire": ["libs/core/shared/fire/src/index.ts"],
+      "@guiseek/ui/uploader": ["libs/ui/uploader/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

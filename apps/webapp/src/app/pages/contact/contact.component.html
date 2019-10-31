@@ -1,0 +1,30 @@
+<h2 class="mat-h2">Envie sua mensagem</h2>
+
+<form fxLayout="column" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input type="text" matInput formControlName="name" />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Assunto</mat-label>
+    <input type="text" matInput formControlName="subject" />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Telefone de contato</mat-label>
+    <input type="text" matInput formControlName="phone" />
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Mensagem</mat-label>
+    <textarea type="text" matInput formControlName="message"></textarea>
+    <mat-error>Obrigatório</mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary">
+    Enviar
+  </button>
+</form>

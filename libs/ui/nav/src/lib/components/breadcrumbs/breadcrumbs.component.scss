@@ -1,0 +1,14 @@
+$spacing: 24px;
+
+:host {
+  // margin-bottom: $spacing;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-height: 64px;
+}
+// .helper {
+//   position: absolute;
+//   bottom: 0;
+//   right: 100px;
+// }

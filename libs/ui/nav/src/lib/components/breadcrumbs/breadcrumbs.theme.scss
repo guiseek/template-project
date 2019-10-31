@@ -1,0 +1,78 @@
+@import '~@angular/material/theming';
+
+@mixin guiseek-breadcrumbs-theme($theme) {
+  $config: mat-typography-config();
+
+  $spacing: 24px;
+  $theme-foreground-map: map-get($theme, foreground);
+  $theme-secondary-text: mat-color($theme-foreground-map, secondary-text);
+  $theme-text: mat-color($theme-foreground-map, text);
+
+  $primary: map-get($theme, primary);
+  $primary-text: mat-color($primary, text);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  ui-breadcrumbs {
+    .title {
+      @include mat-typography-level-to-styles($config, title);
+      font-weight: 400;
+    }
+
+    .crumb,
+    .link {
+      color: $theme-secondary-text;
+      text-decoration: none;
+      transition: color $swift-ease-out-duration $swift-ease-out-timing-function;
+      text-transform: uppercase;
+
+      @include mat-typography-level-to-styles($config, caption);
+
+      &:hover {
+        color: $theme-text;
+      }
+    }
+
+    .crumb.link {
+      cursor: pointer;
+    }
+    .link {
+      cursor: default;
+    }
+
+    .chevron {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+      margin-left: $spacing/4;
+      margin-right: $spacing/4;
+    }
+
+    .crumb.current,
+    .crumb.current .link {
+      color: $theme-text;
+    }
+  }
+  .mat-toolbar.mat-primary {
+    ui-breadcrumbs {
+      .crumb,
+      .link {
+        color: mat-color($primary, 50);
+      }
+      .crumb.link {
+        color: mat-color($primary, 100);
+      }
+    }
+  }
+  .mat-toolbar.mat-accent {
+    ui-breadcrumbs {
+      .crumb,
+      .link {
+        color: mat-color($accent, 50);
+      }
+      .crumb.link {
+        color: mat-color($accent, 100);
+      }
+    }
+  }
+}
