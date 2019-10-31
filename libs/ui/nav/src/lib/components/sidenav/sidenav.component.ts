@@ -43,12 +43,13 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.service.isIconSidenav = !this.service.isIconSidenav;
 
     const snackBarConfig: MatSnackBarConfig = {
-      duration: 10000
+      duration: 6000
     } as MatSnackBarConfig;
 
     if (this.service.isIconSidenav) {
       this.snackBar.open(
-        'You activated Icon-Sidenav, move your mouse to the content and see what happens!',
+        'Mais espaço para sua área de trabalho, mova o mouse para o conteúdo.',
+        // 'You activated Icon-Sidenav, move your mouse to the content and see what happens!',
         '',
         snackBarConfig
       );

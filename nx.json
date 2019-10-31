@@ -61,6 +61,9 @@
     },
     "core-shared-fire": {
       "tags": ["feature:shared", "shared"]
+    },
+    "ui-uploader": {
+      "tags": ["feature:shared", "shared"]
     }
   }
 }

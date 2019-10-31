@@ -11,7 +11,11 @@ import {
   MatProgressSpinnerModule,
   MatDialogModule,
   MatProgressBarModule,
-  MatMenuModule
+  MatMenuModule,
+  MatGridListModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -29,7 +33,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatDialogModule,
     MatProgressBarModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   exports: [
     MatInputModule,
@@ -43,7 +51,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatDialogModule,
     MatProgressBarModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class UiSharedModule {}

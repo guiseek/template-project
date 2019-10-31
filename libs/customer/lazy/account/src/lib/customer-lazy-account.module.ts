@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { UiSharedModule } from '@guiseek/ui/shared';
+import { UiUploaderModule } from '@guiseek/ui/uploader';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CoreSharedAuthModule } from '@guiseek/core/shared/auth';
@@ -18,7 +19,7 @@ const appRoutes: Route[] = [
     path: '',
     component: MainComponent,
     data: {
-      breadcrumb: 'Home'
+      breadcrumb: 'Conta'
     },
     children: [
       {
@@ -33,6 +34,9 @@ const appRoutes: Route[] = [
       },
       {
         path: 'dashboard',
+        data: {
+          breadcrumb: 'Dashboard'
+        },
         loadChildren: () => import('./pages/dashboard/dashboard.module').then(
           (m) => m.DashboardModule
         )
@@ -45,6 +49,7 @@ const appRoutes: Route[] = [
     CommonModule,
     ReactiveFormsModule,
     UiSharedModule,
+    UiUploaderModule,
     FlexLayoutModule,
     CoreSharedAuthModule,
     UiNavModule.forRoot([

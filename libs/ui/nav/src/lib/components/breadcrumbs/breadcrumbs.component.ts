@@ -27,11 +27,6 @@ export class BreadcrumbsComponent implements OnInit {
   public hasParams(breadcrumb: Crumb) {
     return !breadcrumb.params ? [breadcrumb.link] : Object.keys(breadcrumb.params).length ? [breadcrumb.link, breadcrumb.params] : [breadcrumb.link];
   }
-  openHelper(helper) {
-    // const ref = this.dialogService.open(
-    //   DialogModalComponent, {}
-    // )
-  }
   ngOnInit() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -42,7 +37,7 @@ export class BreadcrumbsComponent implements OnInit {
       // get the root of the current route
       let currentRoute: ActivatedRoute = this.route.root;
       // set the url to an empty string
-      let url = '';
+      let url = this.root ? this.root : '';
       // iterate from activated route to children
       while (currentRoute.children.length > 0) {
         const childrenRoutes: ActivatedRoute[] = currentRoute.children;
@@ -62,12 +57,6 @@ export class BreadcrumbsComponent implements OnInit {
           const hasDynamicBreadcrumb: boolean = route.snapshot.params.hasOwnProperty(
             'breadcrumb'
           );
-
-          const hasDynamicHelper: boolean = route.snapshot.params.hasOwnProperty(
-            'helper'
-          );
-
-          console.log('hasDynamicHelper: ', hasDynamicHelper)
 
           if (hasData || hasDynamicBreadcrumb) {
             /*
@@ -91,6 +80,7 @@ export class BreadcrumbsComponent implements OnInit {
               .join('/');
             url += `/${routeURL}`;
 
+            console.log('url: ', url)
             // Cannot have parameters on a root route
             if (routeURL.length === 0) {
               route.snapshot.params = {};

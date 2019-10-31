@@ -701,6 +701,37 @@
           "styleext": "scss"
         }
       }
+    },
+    "ui-uploader": {
+      "projectType": "library",
+      "root": "libs/ui/uploader",
+      "sourceRoot": "libs/ui/uploader/src",
+      "prefix": "ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/uploader/tsconfig.lib.json",
+              "libs/ui/uploader/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/uploader/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/uploader/jest.config.js",
+            "tsConfig": "libs/ui/uploader/tsconfig.spec.json",
+            "setupFile": "libs/ui/uploader/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

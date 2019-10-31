@@ -1,15 +1,36 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { UserAccountRepository } from '../repositories/user-account.repository';
 import { FindConditions } from 'typeorm';
 import { UserAccount } from '../entities/user-account.entity';
 import { UserRegisterDto } from '../dtos/user-register.dto';
-import { UtilsService } from '@guiseek/core/api/common';
+import { UtilsService, AwsS3Service, FileUpload } from '@guiseek/core/api/common';
+import { UserAccountDto } from '../dtos/user-account.dto';
 
 @Injectable()
 export class UserAccountService {
-  constructor(private readonly repository: UserAccountRepository) {}
+  constructor(
+    private readonly repository: UserAccountRepository,
+    private readonly awsS3Service: AwsS3Service
+  ) {}
   findOne(findData: FindConditions<UserAccount>): Promise<UserAccount> {
     return this.repository.findOne(findData);
+  }
+  async changeAvatar(user: UserAccount, file: FileUpload) {
+    let avatar: string;
+    if (file && !UtilsService.isImage(file.mimetype)) {
+      throw new BadRequestException('error.file.not_image');
+      // throw new BadRequestException('O arquivo enviado não é uma imagem');
+    }
+
+    if (file) {
+      avatar = await this.awsS3Service.uploadImage(file);
+    }
+    // user.avatar = avatar;
+    // user = this.userRepository.create({ ...userRegisterDto, avatar });
+
+    return this.repository.save({
+      ...user, avatar
+    });
   }
   async findByUsernameOrEmail(
     options: Partial<{ username: string; email: string }>
@@ -49,7 +70,9 @@ export class UserAccountService {
 
     return this.repository.save(user);
   }
-
+  async update(dto: UserAccountDto) {
+    return await this.repository.save(dto);
+  }
   async find() {
     return this.repository.find()
   }

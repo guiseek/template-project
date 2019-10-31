@@ -3,7 +3,9 @@
 /**
  * Toolbar
  */
-$toolbar-background: white;
+// $toolbar-background: white;
+$toolbar-background: #2c6cd3;
+
 $toolbar-height: 64px;
 $toolbar-z-index: 500;
 
@@ -27,11 +29,14 @@ $mat-toolbar-height-mobile-landscape: 48px !default;
 
 // TODO: https://www.joshmorony.com/creating-a-list-gradient-effect-with-sass-in-ionic/
 
-$color__sidenav-list: #a7a9ae;
+// $color__sidenav-list: #a7a9ae;
+$color__sidenav-list: #fff;
 
-$background-color__sidenav-toolbar: #272b35;
+// $background-color__sidenav-toolbar: #272b35;
+$background-color__sidenav-toolbar: #2c6cd3;
 
-$background-color__sidenav-list: #2b303b;
+$background-color__sidenav-list: #2c6cd3;
+// $background-color__sidenav-list: #2b303b;
 $background-color__sidenav-list__hover: darken(
   $background-color__sidenav-list,
   2

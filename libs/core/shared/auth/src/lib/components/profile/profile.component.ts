@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 // import { CoreAuthService } from '../../services/core-auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserAccount } from '@guiseek/core/shared/security';
 
 @Component({
   selector: 'core-auth-profile',
@@ -10,13 +11,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   form: FormGroup;
+  @Output() submitted = new EventEmitter<UserAccount>();
   constructor(private _fb: FormBuilder) // private _service: CoreAuthService
   {
     this.form = this._fb.group({
-      id: [{ value: '', disabled: true }],
-      role: [{ value: '', disabled: true }],
+      id: ['', [
+        Validators.required
+      ]],
+      firstName: ['', [
+        Validators.required
+      ]],
+      lastName: ['', [
+        Validators.required
+      ]],
+      phone: ['', [
+        Validators.maxLength(15)
+      ]],
+      username: ['', [
+        Validators.required
+      ]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      role: ['', [
+        Validators.required
+      ]]
+      // password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -27,7 +45,7 @@ export class ProfileComponent implements OnInit {
     this.form.markAllAsTouched();
     if (this.form.valid) {
       console.log(this.form.value);
-      // this._service
+      this.submitted.emit(this.form.value);
     }
   }
 }

@@ -2,7 +2,10 @@ $spacing: 24px;
 
 :host {
   // margin-bottom: $spacing;
-  display: block;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-height: 64px;
 }
 // .helper {
 //   position: absolute;

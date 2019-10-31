@@ -2,22 +2,68 @@
   display: flex;
   flex-flow: column;
   flex: 1;
-  height: 100%;
 }
-.mat-sidenav-container {
-  flex: 1;
+.sidenav-container {
+  margin-top: 64px;
+  margin-bottom: 64px;
 }
-.customer-account-container {
-  padding: 16px;
-  background-color: rgba(#ffaa00, 0.1);
-  background-image: url('libs/shared/assets/scss/patterns/liquid-cheese.svg');
-  background-attachment: fixed;
-  background-size: cover;
-  flex: 1;
-  display: flex;
-  flex-flow: column;
-  & > main {
-    flex: 1;
-    background-color: rgba(255, 255, 255, 0.2);
-  }
+.toolbar-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
+
+.toolbar-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.page-action {
+  position: fixed;
+  right: 16px;
+  bottom: 32px;
+}
+// :host {
+//   display: flex;
+//   flex-flow: column;
+//   flex: 1;
+//   // min-height: 100%;
+//   ui-toolbar {
+//     position: fixed;
+//   }
+//   .sidenav {
+//     position: fixed;
+//     margin-top: 64px;
+//   }
+// }
+// .mat-sidenav-container {
+//   flex: 1;
+//   margin-top: 64px;
+// }
+// .customer-account-container {
+//   // background-color: rgba(#ffaa00, 0.1);
+//   // background-image: url('libs/shared/assets/scss/patterns/liquid-cheese.svg');
+//   // background-attachment: fixed;
+//   // background-size: cover;
+
+//   flex: 1;
+//   display: flex;
+//   flex-flow: column;
+//   // margin-top: 64px;
+//   & > main {
+//     // overflow: scroll;
+//     // // max-height: 100%;
+//     // max-height: calc(100% + 128px);
+//     // height: calc(100% + 128px);
+//     // position: fixed;
+//     // display: block;
+//     // width: calc(100% - 32px);
+
+//     padding: 16px;
+//     flex: 1;
+//     // background-color: rgba(255, 255, 255, 0.6);
+//   }
+// }

@@ -6,14 +6,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BoardsComponent } from './boards/boards.component';
 import { GridBoardsComponent } from './grid-boards/grid-boards.component';
 import { Routes, RouterModule } from '@angular/router';
+import { UiSharedModule } from '@guiseek/ui/shared';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    data: {
-      breadcrumb: 'Dashboard'
-    },
     children: [
       {
         path: '',
@@ -37,6 +35,7 @@ const routes: Routes = [
   declarations: [DashboardComponent, BoardsComponent, GridBoardsComponent],
   imports: [
     CommonModule,
+    UiSharedModule,
     RouterModule.forChild(routes)
     // DashboardRoutingModule
   ]

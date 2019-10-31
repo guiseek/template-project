@@ -1,4 +1,4 @@
-<ui-toolbar>
+<ui-toolbar class="toolbar-header">
   <ui-user-menu (logout)="onLogout()">
     <ui-user-menu-button *ngIf="user$ | async as user">
       <img src="assets/drum.svg" alt="" />
@@ -7,25 +7,32 @@
   </ui-user-menu>
 </ui-toolbar>
 
-<mat-sidenav-container>
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     class="sidenav"
     [opened]="sidenavOpen"
     role="navigation"
     [mode]="''"
+    fixedInViewport="true"
+    fixedTopGap="64"
+    fixedBottomGap="64"
     uiSidenavToggle
     #sidenav
   >
     <ui-sidenav></ui-sidenav>
   </mat-sidenav>
-  <mat-sidenav-content class="content-container" fxLayout="column">
-    <mat-toolbar color="primary">
-      <ui-breadcrumbs root="/account" title="Conta"></ui-breadcrumbs>
-    </mat-toolbar>
-    <div class="customer-account-container">
-      <main>
-        <router-outlet></router-outlet>
-      </main>
-    </div>
+  <mat-sidenav-content class="content-container">
+    <!-- <div class="customer-account-container"> -->
+    <!-- <main class="customer-account-container"> -->
+    <router-outlet></router-outlet>
+    <!-- </main> -->
+    <!-- </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<mat-toolbar color="primary" class="toolbar-footer">
+  <ui-breadcrumbs root="/account" title="Conta"></ui-breadcrumbs>
+  <button type="button" mat-fab class="page-action">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
