@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -10,7 +9,6 @@ export class ContactComponent implements OnInit {
   form: FormGroup;
   constructor(
     private _fb: FormBuilder,
-    private _snack: MatSnackBar
   ) {
     this.form = this._fb.group({
       name: ['', [Validators.required]],

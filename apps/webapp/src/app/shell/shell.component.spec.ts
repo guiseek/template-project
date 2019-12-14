@@ -1,13 +1,13 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { CoreSharedFireModule } from '@guiseek/core/shared/fire';
+import { UiSharedModule } from '@guiseek/ui/shared';
+import { UserLoggedComponent } from './../components/user-logged/user-logged.component';
 import { ShellComponent } from './shell.component';
+
 
 describe('ShellComponent', () => {
   let component: ShellComponent;
@@ -15,15 +15,16 @@ describe('ShellComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ShellComponent],
+      declarations: [ShellComponent, UserLoggedComponent],
       imports: [
         NoopAnimationsModule,
+        RouterTestingModule,
+        CoreSharedFireModule,
         LayoutModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatSidenavModule,
-        MatToolbarModule,
+        UiSharedModule
+      ],
+      providers: [
+        { provide: FirestoreSettingsToken, useValue: {} }
       ]
     }).compileComponents();
   }));

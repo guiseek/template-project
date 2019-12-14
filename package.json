@@ -61,7 +61,7 @@
     "@nestjs/swagger": "^3.1.0",
     "@nestjs/typeorm": "^6.2.0",
     "@nrwl/angular": "^8.7.0",
-    "aws-sdk": "^2.560.0",
+    "aws-sdk": "^2.590.0",
     "bcrypt": "^3.0.6",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.10.2",

@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
-import { CoreFireQuery } from '../interfaces/fire-query.interface';
 import { map } from 'rxjs/operators';
-import { firestore } from 'firebase/app';
+import { CoreFireQuery } from '../interfaces/fire-query.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -65,9 +64,9 @@ export class FirestoreService {
     return this.afs.createId();
   }
 
-  protected get timestamp() {
-    return firestore.FieldValue.serverTimestamp();
-  }
+  // protected get timestamp() {
+  //   return firestore.Timestamp.now()
+  // }
 
   protected get batch() {
     return this.afs.firestore.batch();

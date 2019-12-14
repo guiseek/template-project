@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CoreSharedFireModule } from '@guiseek/core/shared/fire';
+import { UiSharedModule } from '@guiseek/ui/shared';
 import { LoginComponent } from './login.component';
+
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -8,7 +12,15 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      imports: [
+        ReactiveFormsModule,
+        CoreSharedFireModule,
+        UiSharedModule
+      ],
+      declarations: [ LoginComponent ],
+      providers: [
+        { provide: FirestoreSettingsToken, useValue: {} }
+      ]
     })
     .compileComponents();
   }));
