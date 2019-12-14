@@ -1,0 +1,12 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  margin: 16px;
+  // justify-content: center;
+  // align-items: center;
+}
+.profile-container {
+  display: flex;
+  flex-flow: row;
+}

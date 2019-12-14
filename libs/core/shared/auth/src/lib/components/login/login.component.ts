@@ -26,9 +26,9 @@ export class LoginComponent implements OnInit {
     // console.log(config)
     this.signUp = config.auth.signup.path;
     this.form = this._fb.group({
-      username: ['', [Validators.maxLength(64)]],
+      username: ['guiseek', [Validators.maxLength(64)]],
       email: ['', [Validators.email, Validators.maxLength(64)]],
-      password: ['', [Validators.required]]
+      password: ['guiseek', [Validators.required]]
     });
   }
 
@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      return this.authSerivce.login(this.form.value);
+      return this.authSerivce.login(this.form.value)
+        .subscribe(console.table)
     }
   }
   forgotPassword() {

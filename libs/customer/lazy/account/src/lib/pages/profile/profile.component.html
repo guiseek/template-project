@@ -1,0 +1,26 @@
+<div fxLayout="column" fxLayoutGap="16px">
+  <div fxLayout="row" fxLayoutGap="16px">
+    <mat-card fxFlex>
+      <core-auth-profile
+        (submitted)="onSave($event)"
+        #authProfile="authProfile"
+      ></core-auth-profile>
+    </mat-card>
+    <mat-card fxFlex="300px">
+      <mat-card-title>Foto do perfil</mat-card-title>
+      <mat-card-subtitle>Enviar foto de perfil</mat-card-subtitle>
+      <ui-uploader field="avatar" url="/api/user-account/me/avatar"></ui-uploader>
+    </mat-card>
+  </div>
+  <mat-card>
+    <!-- <mat-card-title>Solicitar alteração de senha</mat-card-title> -->
+    <h2 class="mat-h2">Solicitar alteração de senha</h2>
+    <mat-card-subtitle
+      >Por questões de segurança, enviaremos um link para o email do cadastro e
+      a partir deste link você poderá alterar sua senha.</mat-card-subtitle
+    >
+    <mat-card-actions>
+      <button mat-button>Enviar link para alterarção de senha</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

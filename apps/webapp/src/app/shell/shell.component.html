@@ -1,0 +1,65 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <!-- <mat-toolbar>Saiba mais</mat-toolbar> -->
+    <app-user-logged></app-user-logged>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/auth">
+        Login
+      </a>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+    <mat-nav-list>
+      <a *ngFor="let page of pages" mat-list-item (click)="goTo(page.path)">
+        {{ page.label }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a routerLink="/" mat-icon-button>
+        <mat-icon>home</mat-icon>
+      </a>
+      <span class="name">
+        Web App
+      </span>
+      <span *ngIf="user$ | async as user">
+        {{ user.displayName }}
+      </span>
+      <img id="logo" src="/assets/images/rocket.svg" alt="" />
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+      <!-- <img id="clouds" src="/assets/images/clouds.svg" alt="" /> -->
+    </main>
+    <a
+      class="contact pwa-fab swing whats-app"
+      data-title="Entre em contato"
+      mat-fab
+      color="accent"
+      href="https://api.whatsapp.com/send?phone=+5544997649268"
+    >
+      <mat-icon
+        svgIcon="whats-app"
+        aria-hidden="false"
+        aria-label="Example thumbs up SVG icon"
+      ></mat-icon>
+    </a>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

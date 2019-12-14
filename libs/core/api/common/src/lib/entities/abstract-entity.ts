@@ -8,7 +8,7 @@ import { UtilsService } from '../services/utils.service';
 
 export abstract class AbstractEntity<T extends AbstractDto = AbstractDto> {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @CreateDateColumn({
     type: 'datetime',

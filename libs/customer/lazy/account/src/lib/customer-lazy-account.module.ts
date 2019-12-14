@@ -1,20 +1,57 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Route } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { UiSharedModule } from '@guiseek/ui/shared';
+import { UiUploaderModule } from '@guiseek/ui/uploader';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpTokenInterceptor } from '@guiseek/core/shared/security';
+
+import { CoreSharedAuthModule } from '@guiseek/core/shared/auth';
+import { HttpTokenInterceptor, AuthGuard, UserAccountResolver } from '@guiseek/core/shared/security';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UiNavModule } from '@guiseek/ui/nav';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 
+const appRoutes: Route[] = [
+  {
+    path: '',
+    component: MainComponent,
+    data: {
+      breadcrumb: 'Conta'
+    },
+    children: [
+      {
+        path: '',
+        component: ProfileComponent,
+        data: {
+          breadcrumb: 'Perfil'
+        },
+        resolve: {
+          userAccount: UserAccountResolver
+        }
+      },
+      {
+        path: 'dashboard',
+        data: {
+          breadcrumb: 'Dashboard'
+        },
+        loadChildren: () => import('./pages/dashboard/dashboard.module').then(
+          (m) => m.DashboardModule
+        )
+      }
+    ]
+  }
+]
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     UiSharedModule,
+    UiUploaderModule,
     FlexLayoutModule,
+    CoreSharedAuthModule,
     UiNavModule.forRoot([
       {
         name: 'Home',
@@ -32,35 +69,29 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
         link: '/account'
       },
       {
-        name: 'Grid',
+        name: 'Dashboard',
         icon: 'insert_chart',
         disabled: false,
         children: [
           {
-            name: 'CRUD Table',
+            name: 'Cartões',
             icon: 'web_aaset',
-            link: '/dashboard/grid/crud-table'
+            link: '/account/dashboard'
           },
           {
-            name: 'Grid List',
+            name: 'Lista em grade',
             icon: 'grid_on',
-            link: '/dashboard/grid/grid-list'
+            link: '/account/dashboard/grid'
           }
         ]
       }
     ]),
-    RouterModule.forChild([
-      {
-        path: '',
-        pathMatch: 'full',
-        // canActivate: [AuthGuard],
-        component: MainComponent
-      }
-    ])
+    RouterModule.forChild(appRoutes),
+    // DashboardModule
   ],
-  declarations: [MainComponent],
+  declarations: [MainComponent, ProfileComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }
   ]
 })
-export class CustomerLazyAccountModule {}
+export class CustomerLazyAccountModule { }

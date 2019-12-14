@@ -57,16 +57,11 @@
         "depConstraints": [
           {
             "sourceTag": "app",
-            "onlyDependOnLibsWithTags": [
-              "shared",
-              "feature:shared"
-            ]
+            "onlyDependOnLibsWithTags": ["shared", "feature:shared"]
           },
           {
             "sourceTag": "shared",
-            "onlyDependOnLibsWithTags": [
-              "shared"
-            ]
+            "onlyDependOnLibsWithTags": ["shared"]
           },
           {
             "sourceTag": "feature:lazy",
@@ -78,17 +73,11 @@
           },
           {
             "sourceTag": "feature:api",
-            "onlyDependOnLibsWithTags": [
-              "feature:api",
-              "shared"
-            ]
+            "onlyDependOnLibsWithTags": ["feature:api", "shared"]
           },
           {
             "sourceTag": "feature:shared",
-            "onlyDependOnLibsWithTags": [
-              "shared",
-              "feature:api"
-            ]
+            "onlyDependOnLibsWithTags": ["shared", "feature:api"]
           }
         ]
       }

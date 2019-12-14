@@ -1,16 +1,39 @@
 <form fxLayout="column" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <mat-label>ID</mat-label>
-    <input type="text" matInput formControlName="id" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Permissão</mat-label>
-    <input type="text" matInput formControlName="id" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Email</mat-label>
-    <input type="email" matInput formControlName="email" />
-  </mat-form-field>
+  <div fxLayout="row" fxLayoutGap="16px">
+    <mat-form-field fxFlex>
+      <mat-label>Nome</mat-label>
+      <input type="text" matInput formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <mat-label>Sobrenome</mat-label>
+      <input type="text" matInput formControlName="lastName" />
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="16px">
+    <mat-form-field fxFlex>
+      <mat-label>Telefone</mat-label>
+      <input type="text" matInput formControlName="phone" />
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <mat-label>Usuário</mat-label>
+      <input type="text" matInput formControlName="username" />
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" />
+    </mat-form-field>
+  </div>
+  <!-- <div fxLayout="row" fxLayoutGap="16px">
+    <mat-form-field fxFlex>
+      <mat-label>ID</mat-label>
+      <input type="text" matInput formControlName="id" />
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <mat-label>Permissão</mat-label>
+      <input type="text" matInput formControlName="id" />
+    </mat-form-field>
+  </div> -->
   <!-- <mat-form-field appearance="outline">
     <mat-label>Foto</mat-label>
     <input type="text" matInput formControlName="id">

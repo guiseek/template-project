@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { AwsConfigInterface } from '../interfaces/aws-config.interface';
 // import { snakeCase } from 'typeorm/util/StringUtils';
 
 export class ConfigService {
@@ -75,11 +76,11 @@ export class ConfigService {
     };
   }
 
-  // get awsS3Config(): IAwsConfigInterface {
-  //   return {
-  //     accessKeyId: this.get('AWS_S3_ACCESS_KEY_ID'),
-  //     secretAccessKey: this.get('AWS_S3_SECRET_ACCESS_KEY'),
-  //     bucketName: this.get('S3_BUCKET_NAME'),
-  //   };
-  // }
+  get awsS3Config(): AwsConfigInterface {
+    return {
+      accessKeyId: this.get('AWS_S3_ACCESS_KEY_ID'),
+      secretAccessKey: this.get('AWS_S3_SECRET_ACCESS_KEY'),
+      bucketName: this.get('S3_BUCKET_NAME'),
+    };
+  }
 }

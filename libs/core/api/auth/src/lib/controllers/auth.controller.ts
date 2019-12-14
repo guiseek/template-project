@@ -31,7 +31,7 @@ export class AuthController {
   constructor(
     public readonly userService: UserAccountService,
     public readonly authService: AuthService
-  ) {}
+  ) { }
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
@@ -76,7 +76,7 @@ export class AuthController {
   // @UseInterceptors(AuthUserInterceptor)
   @ApiBearerAuth()
   @ApiOkResponse({ type: UserAccountDto, description: 'current user info' })
-  getCurrentUser(@AuthUserAccount() user: UserAccount) {
+  getCurrentUser(@AuthUserAccount() { password, ...user }: UserAccount) {
     return user;
   }
 }

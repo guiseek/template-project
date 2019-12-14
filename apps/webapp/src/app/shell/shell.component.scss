@@ -1,0 +1,98 @@
+:host {
+  height: 100%;
+  background-image: url(/assets/images/clouds.svg);
+  /* background-size: contain; */
+  /* background-position-y: bottom; */
+  background-repeat: no-repeat;
+  /* background-position-x: -100px; */
+  /* background-size: auto; */
+  background-position-y: 494px;
+  background-size: 1966px;
+  background-position-x: -118px;
+}
+.sidenav-container {
+  height: 100%;
+}
+
+.mat-drawer-backdrop {
+  height: 100%;
+}
+.pwa-fab {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  .mat-icon {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+  }
+}
+// ::ng-deep .mat-fab.pwa-fab .mat-button-wrapper {
+//   position: fixed;
+//   padding: 8px;
+//   .mat-icon {
+//     width: 100%;
+//     height: 100%;
+//     line-height: 100%;
+//   }
+// }
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  justify-content: start;
+  .name {
+    display: inline-block;
+    padding-left: 8px;
+  }
+}
+.mat-toolbar {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#logo {
+  position: fixed;
+  right: -24px;
+}
+.mat-sidenav-content {
+  height: 100%;
+}
+.mat-drawer-container {
+  background: transparent;
+}
+main {
+  // margin: 16px 8px;
+}
+
+img#clouds {
+  position: fixed;
+  bottom: -220px;
+  left: -230px;
+  z-index: -10;
+  width: 1920px;
+  z-index: 1;
+  opacity: 0.5;
+}
+.mat-drawer {
+  img#clouds {
+    z-index: 1;
+    opacity: 0.5;
+    transition: opacity 3s ease-in-out;
+  }
+  &.mat-drawer-opened {
+    img#clouds {
+      opacity: 1;
+      z-index: 10;
+    }
+  }
+}

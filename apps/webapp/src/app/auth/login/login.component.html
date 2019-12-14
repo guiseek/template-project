@@ -1,0 +1,16 @@
+<form fxLayout="column" [formGroup]="form" (ngSubmit)="login()">
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" />
+    <mat-error>Email inválido</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input type="password" matInput formControlName="password" />
+    <mat-error>Senha inválida</mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary">
+    Enviar
+  </button>
+</form>

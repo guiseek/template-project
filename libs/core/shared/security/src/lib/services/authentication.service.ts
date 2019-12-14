@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { SECURITY_CONFIG } from '../config/security-config.token';
 import { CoreSecurityConfig } from '../interfaces/security-config.interface';
 import { UserAccount, JwtPayload } from '../interfaces';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { tap, take, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { TokenService } from './token.service';
@@ -24,16 +24,18 @@ export class AuthenticationService {
   ) {
   }
   login(data) {
+    console.log(this.config.api.prefix + this.config.api.login, data)
     const login$ = this._http
       .post<JwtPayload>(this.config.api.prefix + this.config.api.login, data)
       .pipe(tap(auth => (this.isLoggedIn = !!auth)));
     login$.subscribe(
-      auth => this.onLoginSuccess(auth),
-      ({ error }) => this.onLoginFailure(error)
+      (auth) => this.onLoginSuccess(auth),
+      (error) => this.onLoginFailure(error)
     );
     return login$;
   }
   onLoginSuccess({ token, user }) {
+    console.log(token, user)
     this._tokenService.token = token.accessToken;
     this.router.navigate([
       this.redirectUrl ? this.redirectUrl : this.config.auth.login.redirectTo
@@ -41,7 +43,9 @@ export class AuthenticationService {
     this.$user.next(user);
   }
   onLoginFailure(err) {
-    this.serverMessage = err.message;
+    console.log(err)
+    this.serverMessage = err && err.message;
+    return throwError(err)
   }
   signUp(data: UserAccount) {
     return this._http.post<UserAccount>(
@@ -75,6 +79,7 @@ export class AuthenticationService {
     }
   }
   validate() {
+    console.log(this.config.api.prefix + this.config.api.me)
     return this._http.get<UserAccount>(this.config.api.prefix + this.config.api.me);
   }
 }
