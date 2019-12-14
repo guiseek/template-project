@@ -4,6 +4,9 @@ module.exports = {
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
+  setupFilesAfterEnv: [
+    './src/test-setup.ts'
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
   coverageDirectory: '../../../../coverage/libs/core/shared/web'
 };
