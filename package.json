@@ -62,7 +62,7 @@
     "@nestjs/typeorm": "^6.2.0",
     "@nrwl/angular": "^8.7.0",
     "aws-sdk": "^2.560.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.10.2",
     "core-js": "^2.5.4",
