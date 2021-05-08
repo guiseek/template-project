@@ -111,7 +111,7 @@
     "eslint": "6.1.0",
     "jest": "24.1.0",
     "jest-preset-angular": "7.0.0",
-    "ng-packagr": "^5.4.0",
+    "ng-packagr": "^10.1.1",
     "prettier": "1.18.2",
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
